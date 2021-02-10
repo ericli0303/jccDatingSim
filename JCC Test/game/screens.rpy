@@ -394,7 +394,7 @@ style main_menu_frame:
 style main_menu_vbox:
     xalign 1.0
     xoffset -20
-    xmaximum 800
+    xmaximum 1920
     yalign 1.0
     yoffset -20
 
@@ -513,7 +513,7 @@ style game_menu_content_frame:
     top_margin 10
 
 style game_menu_viewport:
-    xsize 920
+    xsize 1920
 
 style game_menu_vscrollbar:
     unscrollable gui.unscrollable
