@@ -1,28 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 130, in script
-    if Chihuahua:
-  File "game/script.rpy", line 130, in <module>
-    if Chihuahua:
-NameError: name 'Chihuahua' is not defined
+  File "game/script.rpy", line 134, in script
+    "{i}Right, I'm [me]. Silly me, how could I have forgotten.{/i}"
+KeyError: u'me'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 130, in script
-    if Chihuahua:
-  File "renpy/ast.py", line 1852, in execute
-    if renpy.python.py_eval(condition):
-  File "renpy/python.py", line 2249, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "renpy/python.py", line 2242, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 130, in <module>
-    if Chihuahua:
-NameError: name 'Chihuahua' is not defined
+  File "game/script.rpy", line 134, in script
+    "{i}Right, I'm [me]. Silly me, how could I have forgotten.{/i}"
+  File "C:\Users\Eric\Downloads\renpy-7.4.2-sdk/renpy/ast.py", line 715, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "C:\Users\Eric\Downloads\renpy-7.4.2-sdk/renpy/exports.py", line 1384, in say
+    who(what, *args, **kwargs)
+  File "C:\Users\Eric\Downloads\renpy-7.4.2-sdk/renpy/character.py", line 1164, in __call__
+    what = what_pattern.replace("[what]", sub(what, translate=True))
+  File "C:\Users\Eric\Downloads\renpy-7.4.2-sdk/renpy/character.py", line 1153, in sub
+    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
+  File "C:\Users\Eric\Downloads\renpy-7.4.2-sdk/renpy/substitutions.py", line 270, in substitute
+    s = formatter.vformat(s, (), kwargs)
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 563, in vformat
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 585, in _vformat
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 646, in get_field
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 605, in get_value
+KeyError: u'me'
 
 Windows-10-10.0.19041
 Ren'Py 7.4.2.1292
 JCC Test 1.0
-Wed Feb 10 01:00:54 2021
+Thu Feb 11 00:23:22 2021
