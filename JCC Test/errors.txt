@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 290: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "Shit, I forgot!"
-                     ^
+File "game/script.rpy", line 35: expected end of line
+    queue music "audio/soundtrack2.mp3" fadein 1.0 volume 0.3
+                                        ^
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Thu Feb 11 00:18:28 2021
+Thu Feb 11 10:59:18 2021

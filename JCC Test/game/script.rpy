@@ -4,10 +4,10 @@
 # name of the character.
 
 
-define g = Character('Gavin', color="#00FF00") # uwu crush
-define m = Character('Me', color="#FFFFFF") # ME the MC
-define bff = Character('Bff') # the bestie of Me
-define kiomi = Character('Kiomi') # the bitch
+define g = Character('Gavin', color="#00FF00")  # uwu crush
+define m = Character('Me', color="#FFFFFF")  # ME the MC
+define bff = Character('Bff')  # the bestie of Me
+define kiomi = Character('Kiomi')  # the bitch
 
 image gavin bigsmile = "gavin_big_smile_1.png"
 image construction = "construction worker.png"
@@ -31,18 +31,20 @@ label start:
 
     scene bg_room_morning_1
     with fade
-  
-    menu:  
+    play music "audio/soundtrack1.mp3" fadein 1.0 volume 0.3
+    queue music "audio/soundtrack2.mp3"  volume 0.3
+
+    menu:
     # Difficulty Level
-    # Asian 			    + 10000  
+    # Asian 			    + 10000
     # Half asian 		    + 50
     # Fox girl			    + 10
     # Weeb			        + 5
     # Not asian		        + 0
     # Zombie kawaii girl 	+ 1
     # Deceased		        - 10
-        "Choose a difficulty level" 
-        "Asian": 
+        "Choose a difficulty level"
+        "Asian":
             $ totalScore += 10000
             $ isAsian = True
 
@@ -64,26 +66,26 @@ label start:
         "Deceased":
             $ totalScore -= 10
 
-
-
     menu:
         # Male 		- 1
         # Female	+ 0
         "Choose Gender"
         "Male":
             $ totalScore -= 1
-        
-        "Female":
-            $ totalScore 
 
-    "\"BEEP BEEP BEEP BEEP...\" your alarm is going off." # TODO: BEEP SOUND
+        "Female":
+            $ totalScore
+
+    play sound "<from 1.5 to 2.5>audio/alarm.mp3" volume 0.6  # TODO: BEEP SOUND
+    "\"BEEP BEEP BEEP BEEP...\" your alarm is going off."
+
     "You get up but --"
     with vpunch
     m "Ouch!"
     "You hit your head on your shelf"
     "What day is it?"
     with hpunch
-    "What?! It’s Valentine’s Day!?!" 
+    "What?! It’s Valentine’s Day!?!"
     "Your heart begins to beat wildly"
     m "Today’s the day I’ve been waiting for. I am going to confess my love to Gavin!"
     m "But I’m so nervous… Will he like me back?"
@@ -91,7 +93,7 @@ label start:
 
     m "But first thing’s first, I have to put on my best for him."
 
-    menu: 
+    menu:
         "What would you like to wear for Gavin?"
         "Maid outfit":
             $ totalScore += 5
@@ -127,21 +129,21 @@ label start:
     python:
         name = renpy.input("What's your name?")
         name = name.strip() or "Shy Guy"
-        
+
     define myName = Character("[name]")
 
-    #"{i}{/i}"
+    # "{i}{/i}"
     "{i}Right, I'm [myName]. Silly me, how could I have forgotten.{/i}"
     m "Alright. I’m off to school. Ittekimasu!"
 
 # End of Bedroom Scene, entering Walking to School Scene
-    scene bg_suburban_street 
+    scene bg_suburban_street
     with fade
 
     "You step out the front door onto your cozy neighborhood street."
 
     "The weather is beautiful, so you might as well walk to school today. It’s only a 20 minute stroll from here."
- 
+
     "The sun is still low on the horizon, peeking occasionally out from between the houses as you walk down Chihuahua Court. The sidewalks are busy with kids heading to school, and adults rushing to work. "
 
     "As you are about to turn onto Takoyaki Trail a construction worker halts you."
@@ -161,7 +163,7 @@ label start:
 
     menu:
         "Which street do you take?"
-        
+
         "Chihuahua Court":
             $ Chihuahua = True
             jump chihuahua
@@ -172,20 +174,22 @@ label start:
         "Dildo Drive":
             jump dildo
 
-#Shiba Street
+# Shiba Street
 label shiba:
+    scene bg_urban_street
     "{i}Taking Shibuya Street is probably the best option…{/i}"
     "You backtrack a block or so until you are back on Shibuya Street. The street is full of honking cars in a traffic jam caused by something far away. Salarymen pack the sidewalks pushing in all directions, trying to get to their offices. "
     "Eventually you push your way through the biggest crowds and find a smaller road to walk on."
     jump street_over
 
-#Chihuahua Court
+# Chihuahua Court
 label chihuahua:
+    scene bg_suburban_street3
     "Taking Chihuahua Court is probably the best option…"
     "You keep walking, and walking. Chihuahua Court is scenic for sure. You walk over a wide wooden bridge which passes over a creek. Nearby you spot a torii gate, which marks the entrance to your local shrine. "
     menu:
         "Do you want to stop by for a quick prayer?"
-        
+
         "Yes":
             "You stop in your tracks, then head through the gate into the shrine’s courtyard."
             "You stop in front of the offering box. "
@@ -201,8 +205,9 @@ label chihuahua:
     "It takes several minutes, but you finally reach a road that will get you back on track. "
     "{i} I’ve wasted so much time going this way.{/i}"
 
-#Dildo Drive
+# Dildo Drive
 label dildo:
+    scene bg_dildoway
     "You head down the road a little longer and turn onto Dildo Drive. "
     "The road is narrow and winding. Buildings here have exposed pipes rusting in the elements. Brick fences are crumbling, and trash piles up in corners. Occasionally you see people loitering on the sidewalks. Some of them stare at you as you walk by. "
     "{i}Ugh, it smells bad here. It’s like the smell of a dog who just got peed on by a human. Gross!{/i}"
@@ -211,9 +216,9 @@ label dildo:
     "You feel a poke on your lower back"
     "Surprised and scared, you start running down the road. The road slopes downwards pretty intensely here."
     if(isAsian):
-        "{b}thump, thump, thump{/b} go footsteps behind you. Faster, faster!" 
+        "{b}thump, thump, thump{/b} go footsteps behind you. Faster, faster!"
         "Because of the steep incline, you lose your balance and fall…"
-        with hpunch 
+        with hpunch
         with hpunch
         with hpunch
         "{b}THUD{/b}"
@@ -223,17 +228,18 @@ label dildo:
         "{i}I really got screwed over by them.{/i}"
         return
     else:
-        "hi" ##TODO
-        
+        "hi"  # TODO
+
 label street_over:
-    "hi" ## TODO: Add this
+    "hi"  # TODO: Add this
 
-
-
-    "Awww! It's a cute dog! What are you going to do with it?" # TODO: INSERT A RANDOM DOG PIC
+    # TODO: INSERT A RANDOM DOG PIC
+    show chihuahua at right
+    play sound "bark.mp3"
+    "Awww! It's a cute dog! What are you going to do with it?"
     menu:
 
-        "Pet Dog": 
+        "Pet Dog":
             if Chihuahua:
                 $ totalScore -= 5
             else:
@@ -258,7 +264,7 @@ label street_over:
     "You arrive in your homeroom, out of breath from running."
 
     # show bff delighted with easeinright
-    
+
     bff "Ohayou [myName]-san! You're late, as usual {i}hehe.{/i}"
 
     with fade
@@ -266,7 +272,7 @@ label street_over:
     "*She pulls you*"
 
     menu:
-        
+
         # show bff smug with dissolve
         bff "*whispers* Say, you remember that it's Valentine's day right?"
 
@@ -327,7 +333,7 @@ label street_over:
             "Gavin turns to face you"
             g "I can't believe you would do something like that, [myName]-san. I thought you were nicer than this."
             "Kiomi lightly grabs Gavin's arm to get his attention"
-        
+
         "*Just watch*":
             "Gavin opens the box"
             g "Wow! These chocolates look amazing!"
@@ -335,10 +341,10 @@ label street_over:
             g "And they taste amazing too! This was super sweet of you, Kiomi-chan!"
             kiomi "Yay! I'm glad you like them!"
             kiomi "..."
-            
+
     kiomi "Gavin-san..."
     "I have something I want to tell you-"
-    
+
     "*RINNGGGG*"
     "Just before Kiomi is about to finish saying something, the school bell goes off. It is time for your first class."
     g "Ah, it's time for class. See you guys later. Thanks again for the chocolates Kiomi-chan!"
@@ -349,11 +355,9 @@ label street_over:
     bff "Tonight when [myName] confesses to him, you’ll see how hopeless your situation is!"
     bff "Come on, [myName]. Let’s go to class."
 
-
-
     show gavin bigsmile
 
-    if (totalScore }= 1000):
+    if (totalScore}=1000):
 
         g "I love you"
 
@@ -362,7 +366,7 @@ label street_over:
     else:
 
         g "I'm not interested"
-        
+
         "Gavin grabs you by the hair and throws you out of his room. Bad Ending"
 
     # This ends the game.
