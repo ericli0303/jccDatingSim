@@ -2,8 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 6: is not terminated with a newline. (Check strings and parenthesis.)
-    define g = Character('Gavin', color=
+File "game/script.rpy", line 122: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "Dildo Dive"
+                ^
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Tue Feb  9 23:25:40 2021
+Wed Feb 10 00:59:52 2021

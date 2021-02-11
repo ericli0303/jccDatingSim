@@ -1,63 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While processing the color property of anonymous style:
-  File "game/script.rpy", line 28, in script
-    g "You've created a new Ren'Py game."
-Exception: Color string u'green' must be 3, 4, 6, or 8 hex digits long.
+While running game code:
+  File "game/script.rpy", line 130, in script
+    if Chihuahua:
+  File "game/script.rpy", line 130, in <module>
+    if Chihuahua:
+NameError: name 'Chihuahua' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 28, in script
-    g "You've created a new Ren'Py game."
-  File "renpy/ast.py", line 715, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "renpy/exports.py", line 1384, in say
-    who(what, *args, **kwargs)
-  File "renpy/character.py", line 1179, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "renpy/character.py", line 851, in do_display
-    **display_args)
-  File "renpy/character.py", line 601, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "renpy/ui.py", line 298, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "renpy/display/core.py", line 3007, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
-  File "renpy/display/core.py", line 3418, in interact_core
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/screen.py", line 437, in visit_all
-    self.child.visit_all(callback, seen=None)
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 568, in visit_all
-    callback(self)
-  File "renpy/display/core.py", line 3418, in <lambda>
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "renpy/text/text.py", line 1673, in per_interact
-    if self.style.slow_abortable:
-  File "gen-static/styleclass.pxi", line 765, in renpy.styledata.styleclass.Style.slow_abortable.__get__
-  File "style.pyx", line 493, in renpy.style.StyleCore._get
-  File "style.pyx", line 709, in renpy.style.build_style
-  File "style.pyx", line 706, in renpy.style.build_style
-  File "gen-static/style_functions.pyx", line 759, in style_functions.color_property
-  File "renpy/color.py", line 159, in __new__
-    raise Exception("Color string {!r} must be 3, 4, 6, or 8 hex digits long.".format(c))
-Exception: Color string u'green' must be 3, 4, 6, or 8 hex digits long.
+  File "game/script.rpy", line 130, in script
+    if Chihuahua:
+  File "renpy/ast.py", line 1852, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2249, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "renpy/python.py", line 2242, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 130, in <module>
+    if Chihuahua:
+NameError: name 'Chihuahua' is not defined
 
 Windows-10-10.0.19041
 Ren'Py 7.4.2.1292
 JCC Test 1.0
-Tue Feb  9 23:25:00 2021
+Wed Feb 10 01:00:54 2021
