@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 122: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "Dildo Dive"
-                ^
+File "game/script.rpy", line 145: is not terminated with a newline. (Check strings and parenthesis.)
+(Perhaps you left out a " at the end of the first line.)
+        "The sun is still low on the horizon, peeking occasionally out from between the houses as you walk down Chihuahua Court. The sidewalks are busy with kids heading to school, and adults rushing to work. 
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Wed Feb 10 00:59:52 2021
+Wed Feb 10 21:58:56 2021
