@@ -5,7 +5,7 @@
 
 
 define g = Character('Gavin', color="#00FF00") # uwu crush
-define m = Character('Me') # ME the MC
+define m = Character('Me', color="#FFFFFF") # ME the MC
 define bff = Character('Bff') # the bestie of Me
 define kiomi = Character('Kiomi') # the bitch
 
