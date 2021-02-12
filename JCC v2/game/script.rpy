@@ -8,11 +8,11 @@ define g = Character('Gavin', color="#00FF00")  # uwu crush
 define m = Character('Me', color="#FFFFFF")  # ME the MC
 define bff = Character('Lulu')  # the bestie of Me
 define kiomi = Character('Kiomi')  # the bitch
-define unknown = Character('???') # used as placeholder for unknown
+define unknown = Character('???')  # used as placeholder for unknown
 define teacher = Character('Teacher')
 define mbff = Character('Beefu')
 define gavinandmbff = Character('[g] and [mbff]')
-#Kawazawa
+# Kawazawa
 
 image gavin bigsmile = "gavin big smile 1.png"
 image gavin confused = "gavin confused 1.png"
@@ -24,7 +24,7 @@ image gavin thinking = "gavin thinking 1.png"
 image gavin villiansmile = "gavin villian smile 1.png"
 image gavin villianstare = "gavin villian stare 1.png"
 image gavin satisfied = "gavin satisfied 1.png"
-image construction = "construction worker.png" # construction
+image construction = "construction worker.png"  # construction
 
 
 default totalScore = 0
@@ -50,14 +50,14 @@ label start:
     play music "audio/soundtrack1.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
 
     menu:
-    # Difficulty Level
-    # Asian 			    + 10000
-    # Half asian 		    + 50
-    # Fox girl			    + 10
-    # Weeb			        + 5
-    # Not asian		        + 0
-    # Zombie kawaii girl 	+ 1
-    # Deceased		        - 10
+        # Difficulty Level
+        # Asian 			    + 10000
+        # Half asian 		    + 50
+        # Fox girl			    + 10
+        # Weeb			        + 5
+        # Not asian		        + 0
+        # Zombie kawaii girl 	+ 1
+        # Deceased		        - 10
         "Choose a difficulty level"
         "Asian":
             $ totalScore += 10000
@@ -94,7 +94,7 @@ label start:
 ################################################
 ##          WAKING UP                         ##
 ################################################
-    play sound "<from 2.4 to 4.6>audio/alarm.mp3" volume 0.7 
+    play sound "<from 2.4 to 4.6>audio/alarm.mp3" volume 0.7
     "\"BEEP BEEP BEEP BEEP...\" your alarm is going off."
     "You get up but --"
     with vpunch
@@ -277,7 +277,7 @@ label street_over:
     play music "audio/soundtrack1.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
     "{i}Whew, that was a tiring detour. Only 2 blocks to go!{/i}"
     "Rushing along, you are minding your own business until suddenly..."
-    
+
     play sound "<from 0 to 1.0>audio/bark.mp3" volume 0.7
     if(Chihuahua):
         show shiba chihuahua at right with easeinright
@@ -307,11 +307,11 @@ label street_over:
                 jump kickshiba
 
         "Pee on Dog":
-            if Chihuahua or isAsian:                
+            if Chihuahua or isAsian:
                 jump peechew
             else:
                 jump peeshiba
-                
+
         "Wield the dildo as a blade" if containsDildo:
             "{i}I can protect myself with my dildo{i}"
             "The dog yanks the dildo from your hand, leaving you defenseless, and runs a"
@@ -319,7 +319,6 @@ label street_over:
             $ inventory.remove("dildo")
             jump dog_over
 
-    
 
 label petshiba:
     show shiba pet with dissolve
@@ -344,7 +343,7 @@ label petchew:
                     "You try to press your hand on its peanut sized head but as expected when your instinct screams in fright it goes in and attacks your kind being and pierces your skin."
                     "Now you’re bleeding and more late for school, but you gain +3 determination."
                 "No":
-                    "Well, at least you followed your instincts in the end, you back off and head to school." 
+                    "Well, at least you followed your instincts in the end, you back off and head to school."
         "No":
             "Yeah better off not petting it. You ignore the dog and head off to school."
 
@@ -367,7 +366,7 @@ label peeshiba:
     "????" "WTF, WHAT ARE YOU DOING TO TOFU-CHAN!!!!! IS THAT PEE!!!"
     "Oh no, the owner is here but wait, why does your heart go aflutter at this tone."
     "Why is there a bittersweet emotion stirring in your heart. You take a glace in the direction of the voice but want to hide deep down in a hole and escape this unbelievable reality."
-    show gavin surprised at left with easeinleft 
+    show gavin surprised at left with easeinleft
     g "Huh… wait… it can’t be… is that you [myName]-san…?"
     m "Ahh.. G. Ga.. [g] ummm I can explain"
     "{i}Everything is falling apart. Why is he here now. Ah this is the worst.{/i}"
@@ -387,9 +386,7 @@ label peeshiba:
     "You feel terrible but after a few months [g] begins to talk to you. A year later you are friendly again but it’s never the same."
     "He also hasn’t let you within a mile of a dog and looks at you in disgust whenever he sees you near a dog."
     "Bad Ending"
-    return 
-    
-
+    return
 
 
 label peechew:
@@ -400,7 +397,7 @@ label peechew:
     "You and [g] make awkward eye contact."
     jump peechewending
 
-#End of Dog Scene
+# End of Dog Scene
 label dog_over:
     hide shiba
     "As you speed walk the next block, something on the ground suddenly catches your eye."
@@ -412,7 +409,7 @@ label dog_over:
             "{i}Hmmm I wonder what it is?{/i}"
             "You reach down and attempt to pick up this shiny and brown thing."
             with hpunch
-            m "EWWWWWWW!" 
+            m "EWWWWWWW!"
             "There is now a big piece of dog poop in your hand and it feels squishy between your fingers."
             python:
                 if "poop" in inventory:
@@ -425,23 +422,23 @@ label dog_over:
                     "This might be useful later..."
                     "You pocket the poop and wipe your hand on some nearby grass."
                     m "That should do it."
-                    
-                "No": 
+
+                "No":
                     "Yuck!"
                     "Dropping the poop like a hot potato, you frantically look around for a tissue to wipe your hands with and accidentally brush your leg."
                     "{i}Ugh, what kind of poopy person doesn’t pick up after their dog?{/i}"
                     "Finally you get the poop off your hand, but you smell a bit funny. Oh well."
-            
+
         "No":
             "{i}I don’t have time to pick up random things off the ground!! I need to get to school!{/i}"
-        
+
     "A few paces later, you see another thing on the ground."
     "{i}Oh look there’s another shiny and brown thing on the ground!{/i}"
 
     python:
         if "money" in inventory:
             inventory.remove("money")
-        
+
     menu:
         "Should I pick it up?"
 
@@ -466,15 +463,15 @@ label dog_over:
     "*She pulls you*"
     show bff smug with dissolve
 
-    menu: 
+    menu:
         bff "*whispers* Say, you remember that it's Valentine's day right?"
 
         "Umm, wait really?":
             bff "Yes! You dummy."
-        
+
         "Yeah, I remember.":
             pass
-    
+
     menu:
         "Sooo... Are you gonna confess to him?"
 
@@ -488,7 +485,7 @@ label dog_over:
             bff "Don't be silly, I know you're head over heels for [g]-san"
 
     show bff smile with dissolve
-    
+
     menu:
         bff "So, are you going to give him chocolates?"
 
@@ -512,11 +509,11 @@ label dog_over:
     bff "Look! [g]-san is here!"
 
     "[g] walks into the classroom. He’s wearing an earthy-toned overcoat over his uniform, and sports a cute maroon beanie."
-    
+
     show bff smug with dissolve
     bff "He looks so hot today, doesn’t he? Heehee-"
     bff "Quick! Go confess to him dummy! Wait a second… What is happening?"
-    
+
     hide bff
     # Kiomi ARC
     show nemesis delighted at right with easeinright
@@ -566,7 +563,6 @@ label dog_over:
     kiomi "[g]-san..."
     "I have something I want to tell you-"
 
-
     play sound "audio/bell.mp3"
     "*RINNGGGG*"
     show nemesis sad with dissolve
@@ -574,10 +570,10 @@ label dog_over:
     "Just before Kiomi is about to finish saying something, the school bell goes off. It is time for your first class."
     g "Ah, it's time for class. See you guys later. Thanks again for the chocolates Kiomi-chan!"
     "[g] runs off to his first class"
-    hide gavin 
+    hide gavin
     show nemesis smug with dissolve
     "Kiomi-san glares at yoo... Then grins."
-    kiomi "He's mine, loser." 
+    kiomi "He's mine, loser."
     show bff angry at left with easeinleft
     bff "Shut up. We all know [g]-san likes [myName]-san, so you're out of luck."
     bff "Tonight when [myName] confesses to him, you’ll see how hopeless your situation is!"
@@ -618,7 +614,7 @@ label dog_over:
     "{i}It’s not like I’m jealous of him or anything… Baka.{/i}"
     "[mbff] is sitting at a table with [g] and [bff]. He motions for you to take a seat with them."
     "{i}I’ll go sit down with them after I grab some food.{/i}"
-    
+
     menu:
 
         "Speaking of which, what should I eat today?"
@@ -639,7 +635,7 @@ label dog_over:
             $ mainDish = "Bowl of soy sauce"
             "{i}I read in a beauty magazine that soy sauce helps clear your complexion!{/i}"
             "{i}Of course I am going to eat this for lunch. I want to look beautiful for [g]!{/i}"
-            
+
         "Microwaved salad":
             $ mainDish = "Microwaved salad"
             "{i}I’m so stressed by all this Valentine’s Day drama. I just need to eat my No. 1 comfort food.{/i}"
@@ -661,11 +657,10 @@ label dog_over:
             "{i}They’re salty, fatty, and delicious!{/i}"
             "{i}But not very healthy… Whatever!{/i}"
 
-
         "3 shots of vodka":
             "{i}Heheh, I snuck a flask to school. Hopefully nobody notices that it’s not water!{/i}"
             "{i}I need this liquid courage to ask [g] out today!{/i}"
-    
+
     "{i}I hope [g] appreciates my good taste in food!{/i}"
 
     "Food in hand, you head to the table and take a seat next to Lulu-san."
@@ -673,7 +668,7 @@ label dog_over:
     bff "Hey slowpoke! Come on, let’s eat!"
     show gavin bigsmile at right with easeinright
     g "Hi [myName]-san. What did you get to eat?"
-    
+
     g "..."
 
     if mainDish == "Tempura Udon":
@@ -682,7 +677,7 @@ label dog_over:
 
         menu:
             g "Can I take a sip? Pleeease?"
-            
+
             "{b}Sure!{/b}":
                 $ totalScore += 15
                 "[g] reaches across the table and takes hold of your bowl of udon."
@@ -725,15 +720,15 @@ label dog_over:
         g "Oh- That’s... an interesting choice for sure."
         g "... Just a bit unconventional, that’s all."
         "[g] looks a little bit uncomfortable."
-        
+
         menu:
             g "Wait. Are you actually going to eat that?"
-        
+
             "{b}Yeah.":
                 show gavin stern with dissolve
                 g "Umm, gross..."
                 "{i}He thinks my choice in food is gross! Ahhh! This is so embarrassing-{/i}"
-            
+
             "{b}Actually, no. This is just a joke.":
                 show gavin bigsmile with dissolve
                 $ totalScore += 20
@@ -755,9 +750,7 @@ label dog_over:
                 g "Looks like you liked it. Here, have the rest of my roll."
                 "{i}It’s kind of exciting getting fed by [g]-san like this.{/i}"
                 "{i}I hope we can do this more often.{/i}"
-                        
-      
-    
+
     "You feel [bff] poke you in the leg, trying to get your attention."
     "She leans over to whisper in your ear."
     show bff smile2 at left with dissolve
@@ -793,10 +786,10 @@ label dog_over:
     "He chuckles a little"
     show male bff neutral
     mbff "Well, you know, sometimes I also like that part about yo-"
-    
+
     play sound "audio/bell.mp3"
     "*RINNGGGG*"
-    
+
     g "Ah, it looks like lunch period is just about over."
     g "See you all at club after classes!"
     mbff "Yea, see y’all later."
@@ -813,12 +806,12 @@ label dog_over:
     "{i}She was too drowned by her own thoughts, I doubt she heard what he was trying to say...{/i}"
     "{i}Anyways, it’s up to them to figure it out! And it’s time to go to class again.{/i}"
     "{i}Hopefully it’ll be more interesting than the classes this morning...{/i}"
-    
+
     "Right as you are about to leave the cafeteria, you remember about the Valentine’s Day pop-up shop that supposedly sells chocolates."
     "You walk by the shop to assess your options."
     "{i}Dang these are expensive.{/i}"
     "{i}But they sell dark chocolates with raspberry filling! Those are [g]-san’s favorites!{/i}"
-    
+
     menu:
 
         "Should I get something for Gavin?"
@@ -830,7 +823,7 @@ label dog_over:
         "Not buying" if "money" in inventory:
             "{i}Oh well… It's not worth the price. I’ll have to do my best to confess to him without the chocolates.{/i}"
 
-        "Buying" if "money" in inventory: 
+        "Buying" if "money" in inventory:
             "{i}Good thing I found some cash on the street earlier today, otherwise I wouldn’t be able to afford these.{/i}"
             "{i}Now I can do a real Valentine’s Day confession! Chocolates and all!{/i}"
             $ inventory.remove("money")
@@ -849,13 +842,13 @@ label dog_over:
     "The last class of the day is World History! Almost done!"
     teacher "... it was the bloodiest war in the history of mankind..."
     teacher "...and that’s why [g]'s favorite food is sush..."
-    
+
     "{i}I’m falling asleep...{/i}"
-    
+
     teacher "Now class, I’m pleased to announce that we have a pop quiz today!"
-    
+
     "{i}Oh no! I was half-asleep! What’s this quiz about?{/i}"
-    
+
     teacher "[name]-san, it’s your turn first. Please answer these questions and then you are free to leave."
 
     "{i}Oh no, I’m doomed.{/i}"
@@ -866,22 +859,22 @@ label dog_over:
 
     "You look around but everyone is looking at you awaiting an answer."
 
-    "{i}Is no one questioning why we’re asking questions about gavin? Ugh whatever...{/i}"  
+    "{i}Is no one questioning why we’re asking questions about gavin? Ugh whatever...{/i}"
 
     menu:
         "{i}What should I answer?{/i}"
         "3.7":
             teacher "The answer is 3.9."
-            
+
             "{i}Shit! I totally knew that!{/i}"
-            
+
             "[g] looks disappointingly at you"
 
             $ totalScore -= 5
 
         "3.9":
             teacher "Correct, the answer was 3.9."
-            
+
             "{i}Yes! I’m as smart as him! Haha!{/i}"
 
             "[g] nods approvingly"
@@ -890,29 +883,29 @@ label dog_over:
 
         "4.0":
             teacher "The answer is 3.9."
-            
+
             "{i}What is this guy talking about? [g]-san is way too smart to only have a 3.9.{/i}"
 
             "[g] looks disappointingly at you"
 
             $ totalScore -= 3
-    
+
     teacher "Question 2. What was [g]-san wearing this morning?"
 
     "{i}Again? Why are they asking me about [g]-san? This will be too easy.{/i}"
 
     menu:
         "{i}What should I answer?{/i}"
-        
+
         "A red overcoat":
             teacher "Incorrect, the answer is a maroon scarf."
 
             "{i}Shit! I literally sniffed his coat this morning. How could I forget that it wasn’t red!?{/i}"
-            
+
             "[g] shakes his head"
 
             $ totalScore -= 5
-            
+
         "A redsocks cap":
             teacher "Incorrect, the answer is a maroon scarf."
 
@@ -937,36 +930,36 @@ label dog_over:
 
     menu:
         "{i}What should I answer?{/i}"
-        
+
         "In half":
             teacher "Incorrect, the answer is in thirds."
-            
+
             "{i}Who the hell folds their pants in thirds?{/i}"
 
             "[g] facepalms"
-            
+
             $ totalScore -= 5
 
         "In thirds":
             teacher "Correct, [g] is the only one weird enough that does this."
-            
+
             "{i}Whew, that was a lucky guess{/i}"
 
             "[g] bites his lips"
-            
+
             $ totalScore += 5
 
         "In fourths":
             teacher "Incorrect, the answer is in thirds."
-            
+
             "{i}Who the hell folds their pants in thirds?{/i}"
 
             "[g] facepalms"
-            
+
             $ totalScore -= 5
 
     "{i}That was a weird quiz. I wonder what that was all about...{/i}"
-    
+
 ################################################
 ##        AMERICAN CULTURE CLUB               ##
 ################################################
@@ -980,23 +973,22 @@ label dog_over:
     "{i}Guess that box of chocolates really sends a message across.{/i}"
     "At the front of the classroom, [g]-san and the eboard are leading a discussion about America’s Super Bowl sports event."
 
-
     show gavin thinking at left with easeinleft
     g ".. Running an advertisement at the Super Bowl can cost thousands of dollars per second! No wonder Americans can only afford McDonalds..."
     g "... And the Americans throw parties to watch the advertisements. Isn’t that insane? Why do they like watching advertisements so much?…"
     "The discussion is fun and heated."
     "{i}Americans have such an interesting culture. Ahh, someday I want to visit there.{/i}"
 
-    show bff smile at right with easeinright 
+    show bff smile at right with easeinright
     hide gavin with dissolve
     "At the end of the discussion, [bff]-san comes over and pokes you to get your attention."
     "*poke poke*"
     bff "Sooo…"
     bff "This is your last chance to make a move on [g]-san."
-    
+
     menu:
         bff "Are you going to invite him or not?"
-        
+
         "Yes":
             bff "YES FINALLY. I mean-"
             bff "It’s no big deal! Just go invite him, dummy!"
@@ -1008,14 +1000,14 @@ label dog_over:
             m "[g]-san, are you free after school today?"
 
             g "Yeah, I’m free. What’s the matter?"
-            
+
             m "Ano… actually me, [bff] and [mbff] are going to karaoke. I was wondering if you would want to join us?"
 
             show gavin excited with dissolve
             g "Karaoke? Ooh that sounds fun! Sure, I’ll join."
-            
+
             m " I will send you the address! See you there!"
-            
+
             jump karaoke
 
         "No":
@@ -1066,93 +1058,92 @@ label karaoke:
     show gavin excited at right with easeinright
 
     menu:
-            g "What song should we sing, [name]-chan? You pick!"
-        
-            "Grand Blue":
-                g "YOOO THAT’S A STRAIGHT BANGER!!! ATSUKUNARE MY FRIENNNNDSS!"
+        g "What song should we sing, [name]-chan? You pick!"
 
-                "*Play Grand Blue*"
+        "Grand Blue":
+            g "YOOO THAT’S A STRAIGHT BANGER!!! ATSUKUNARE MY FRIENNNNDSS!"
 
-                "{i}I’m..I’m so nervous.. I hope [g] won’t judge me for my voice.. It’s my first time singing and I feel so nervous >.<{/i}"
-                "{i}Especially…. In front of someone I like.{/i}"
-                "You try to calm yourself down…"
-                "Just as you sing the first two words of the song, [g] moved beside you and joined you in singing."
-                "You felt your heart rate increase, your cheeks starting to heat up."
-                "{i}Oh no.. he is right beside me.. W-we are so close,, I think my face is-s going to overheat from being so embarrassed.{/i}"
-                "{i}He’s different when he sings. His voice is in the mid-range, soft and nasally.{/i}"
-                "{i}He’s so perfect and…{/i}"
-                "{i}I think.. I- I am falling deeper i-in love.{/i}"
-                "As you are wandering in your thoughts, he turns to you and gives you a bright smile."
+            "*Play Grand Blue*"
 
-                g "Hey, what are you doing [name]-chan, let's sing together!"
+            "{i}I’m..I’m so nervous.. I hope [g] won’t judge me for my voice.. It’s my first time singing and I feel so nervous >.<{/i}"
+            "{i}Especially…. In front of someone I like.{/i}"
+            "You try to calm yourself down…"
+            "Just as you sing the first two words of the song, [g] moved beside you and joined you in singing."
+            "You felt your heart rate increase, your cheeks starting to heat up."
+            "{i}Oh no.. he is right beside me.. W-we are so close,, I think my face is-s going to overheat from being so embarrassed.{/i}"
+            "{i}He’s different when he sings. His voice is in the mid-range, soft and nasally.{/i}"
+            "{i}He’s so perfect and…{/i}"
+            "{i}I think.. I- I am falling deeper i-in love.{/i}"
+            "As you are wandering in your thoughts, he turns to you and gives you a bright smile."
 
-                "Doki doki, you felt your heart skipping a beat.." 
-                "{i}Did [g] just ask me t-to sing together?! Is.. Is this a duet?!{/i}"
-                "[g] nudges you and you started singing with him… Drifting away in a world consisting of only you two."
-                "You have no idea how much time has passed since you started singing with [g]."
-                "You felt less embarrassed and nervous when you started singing with [g]."
-                "You only knew that both of you had a lot of fun, and you hope that time could stop at this moment..."
+            g "Hey, what are you doing [name]-chan, let's sing together!"
 
-                g "Wow [name].. your taste in music is incredible. Some of them were similar to mine. I had a fun time singing with you."
-                g "We should go to concerts and karaoke together more often."
+            "Doki doki, you felt your heart skipping a beat.."
+            "{i}Did [g] just ask me t-to sing together?! Is.. Is this a duet?!{/i}"
+            "[g] nudges you and you started singing with him… Drifting away in a world consisting of only you two."
+            "You have no idea how much time has passed since you started singing with [g]."
+            "You felt less embarrassed and nervous when you started singing with [g]."
+            "You only knew that both of you had a lot of fun, and you hope that time could stop at this moment..."
 
-                m "Ehhh? Eto.. O-Okay! I’m done with my song!"
+            g "Wow [name].. your taste in music is incredible. Some of them were similar to mine. I had a fun time singing with you."
+            g "We should go to concerts and karaoke together more often."
 
+            m "Ehhh? Eto.. O-Okay! I’m done with my song!"
 
-            "Snow Halation":
-                g "YOOO [mbff] the classsssic! Dude you should sing this!"
+        "Snow Halation":
+            g "YOOO [mbff] the classsssic! Dude you should sing this!"
 
-                "*Play Snow Halation*"
+            "*Play Snow Halation*"
 
-                show male bff smug at left with easeinleft
-                "{i}Oh shit I forgot [mbff]-san was really into love live. Now he is singing it.{/i}"
-                "{i}At least [g] didn’t judge me for this choice but we didn’t get to sing together :({/i}"
-                "You feel try to follow the lyrics but you forgot how embarrassing this song gets."
-                "{i}But hot damn, [mbff] is belting it. The man has zero holding back.{/i}"
-                "You wonder what [bff] thinks about this."
-                hide male bff smug
-                show bff angry at left with easeinleft
-                "You take a glance over and her eyes are throwing daggers at you. She is jealous you are singing alongside [mbff]"
-                "{i}UGH how could a simple song choice turn out so sub par.{/i}"
-                "Well you get some songs in and overall you are glad you came."
-                "Although after setting the mood idol music continued for a while and you never got the chance to sing with [g]."
+            show male bff smug at left with easeinleft
+            "{i}Oh shit I forgot [mbff]-san was really into love live. Now he is singing it.{/i}"
+            "{i}At least [g] didn’t judge me for this choice but we didn’t get to sing together :({/i}"
+            "You feel try to follow the lyrics but you forgot how embarrassing this song gets."
+            "{i}But hot damn, [mbff] is belting it. The man has zero holding back.{/i}"
+            "You wonder what [bff] thinks about this."
+            hide male bff smug
+            show bff angry at left with easeinleft
+            "You take a glance over and her eyes are throwing daggers at you. She is jealous you are singing alongside [mbff]"
+            "{i}UGH how could a simple song choice turn out so sub par.{/i}"
+            "Well you get some songs in and overall you are glad you came."
+            "Although after setting the mood idol music continued for a while and you never got the chance to sing with [g]."
 
-            "All Star":
-                g "ALL STAR!"
-                g "I did not expect that choice from you. Normally that is a late game pic to end the night but if you want lets all go."
+        "All Star":
+            g "ALL STAR!"
+            g "I did not expect that choice from you. Normally that is a late game pic to end the night but if you want lets all go."
 
-                "*Play All Star*"
+            "*Play All Star*"
 
-                show male bff excited at right with easeinright
-                gavinandmbff "SOOOOOOOOOOOMMMM..."
+            show male bff excited at right with easeinright
+            gavinandmbff "SOOOOOOOOOOOMMMM..."
 
-                "{i}Huh, wait what are they doing, why are they yellin...{/i}"
+            "{i}Huh, wait what are they doing, why are they yellin...{/i}"
 
-                gavinandmbff "MMMMMMMMMMEBOOODY ONCE TOLD ME THE WORLD WAS GONNA ROLL ME, I AIN’T THE SHARPEST TOOL IN THE SHED"
+            gavinandmbff "MMMMMMMMMMEBOOODY ONCE TOLD ME THE WORLD WAS GONNA ROLL ME, I AIN’T THE SHARPEST TOOL IN THE SHED"
 
-                "{i}Wow it seems [g] and [mbff] go back with this song. They are completely lost and now just singing together.{/i}"
-                "You and [bff] lightly sing in the background but [g] and [mbff] are having too much fun and are too loud to hear your voices."
-                "The night continues with a lot of group songs and energetic music and you enjoy it, but you wish you could have sung together with [g]."
+            "{i}Wow it seems [g] and [mbff] go back with this song. They are completely lost and now just singing together.{/i}"
+            "You and [bff] lightly sing in the background but [g] and [mbff] are having too much fun and are too loud to hear your voices."
+            "The night continues with a lot of group songs and energetic music and you enjoy it, but you wish you could have sung together with [g]."
 
-            "Dick in a box":
-                g "Huh, what’s this song. Haha it sounds highly inappropriate but it says it's a Christmas song."
-                g "You wanted to sing it right [name]-chan, so shikataganai ne."
+        "Dick in a box":
+            g "Huh, what’s this song. Haha it sounds highly inappropriate but it says it's a Christmas song."
+            g "You wanted to sing it right [name]-chan, so shikataganai ne."
 
-                "*Play Dick in a Box*"
+            "*Play Dick in a Box*"
 
-                g "Alright, staring off kinda slow here, but I like these jazzy vibes."
-                g "You know it’s christmas hmmm hm"
+            g "Alright, staring off kinda slow here, but I like these jazzy vibes."
+            g "You know it’s christmas hmmm hm"
 
-                "{i}Whhhat is this song, I thought the funny pick might get a good joke but they actually are singing it.{/i}"
-                "{i}Well… guess there is no choice now, we are committing{/i}"
+            "{i}Whhhat is this song, I thought the funny pick might get a good joke but they actually are singing it.{/i}"
+            "{i}Well… guess there is no choice now, we are committing{/i}"
 
-                gavinandmbff "ITS MY DICK IN BOX!!!!"
+            gavinandmbff "ITS MY DICK IN BOX!!!!"
 
-                "Well your friendship has taken a step… in some direction."
-                "You now bond with [g] on a new level but it's different. He now looks at you the same way as [mbff]."
+            "Well your friendship has taken a step… in some direction."
+            "You now bond with [g] on a new level but it's different. He now looks at you the same way as [mbff]."
 
-                jump dickboxending
-                
+            jump dickboxending
+
 
 ################################################
 ##         HEADING HOME/PRE-ENDING            ##
@@ -1160,8 +1151,8 @@ label karaoke:
 
     scene bg_kareoke with fade
 
-    "You hear a knock at the door to your karaoke room."  
-     
+    "You hear a knock at the door to your karaoke room."
+
     unknown "Excuse me, but your time is up! Please wrap up and head to the front desk, thank you very much."
 
     "{i}Dang, has it already been two hours?{/i}"
@@ -1185,7 +1176,7 @@ label karaoke:
     bff "Hrmph."
 
     "{i}Why does flirting come so easy to Lulu? It’s not fair.{/i}"
-    
+
     show gavin bigsmile with dissolve
     g "Get up you lovebirds. It’s time to head home."
     "[bff], getting up from her position on [mbff]'s lap, sidles up to you and whispers into your ear."
@@ -1194,12 +1185,12 @@ label karaoke:
     bff "You didn’t get up to anything funny with Gavin-chan while I was asleep, did you? Heehee-"
 
     show bff normal with dissolve
-    
+
     menu:
         bff "So, are you going to ask him to walk home with you?"
 
         "Yes":
-            hide bff 
+            hide bff
             hide male bff
             show gavin bigsmile at right with easeinleft
             "{i}This is it. I’m going to confess to him while we walk together.{/i}"
@@ -1221,15 +1212,14 @@ label karaoke:
             "{i}He’s so dreamy, but that will make it hurt more if he rejects me.{/i}"
             "{i}I can’t do it!{/i}"
 
-
             bff "Alright, suit yourself."
             "She gives you a disapproving look, but takes your arm and starts dragging you out."
 
             "{i}I think we’re better off if he never finds out how I feel...{/i}"
             "{i}Even if he smells really good.{/i}"
 
-            jump chickened_ending   
-            
+            jump chickened_ending
+
 
 ################################################
 ##         ENDINGS                  ##
@@ -1237,7 +1227,7 @@ label karaoke:
 
 label walk:
     scene bg_possible_farewell with fade
-    show gavin satisfied with easeinright 
+    show gavin satisfied with easeinright
     "You and Gavin decide to walk back home together, when you realize your pockets feel awfully heavy..."
     if not inventory:
         "hm... there's nothing in my pockets... I must be going crazy..."
@@ -1268,8 +1258,8 @@ label walk:
                 show gavin bigsmile with dissolve
                 g "Thank you."
 
-                $ totalScore += 40 
-            
+                $ totalScore += 40
+
             "Money" if "money" in inventory:
                 "You pull out the wad of money that you found earlier in the day."
                 show gavin excited with dissolve
@@ -1295,7 +1285,7 @@ label walk:
                 g "Thanks, I guess… But honestly, no thanks."
                 "Gavin gestures for you to drop it on the curb."
                 g "Please don’t do that again…"
-                $ totalScore -=5
+                $ totalScore -= 5
 
             "Dildo" if "dildo" in inventory:
                 "You pull the floppy yellow dildo out from your pack. It’s still crusty."
@@ -1312,7 +1302,6 @@ label walk:
         jump calculateending
 
 
-
 label calculateending:
     show gavin satisfied with dissolve
     if totalScore >= 100:
@@ -1321,7 +1310,6 @@ label calculateending:
         jump niceending
     else:
         jump verybadending
-          
 
 
 label dickboxending:
@@ -1329,16 +1317,22 @@ label dickboxending:
     "You have become one of [g]'s bros and a romantic relationship is no longer possible. You can’t exactly feel happy about the outcome but you did sing dick in a box alongside [g]. At least you are still close friends…"
     return
 
-    
+
 label dildoending:
     scene bg_youdied with fade
-    "While you were unconcious, no one passed by the sketchy Dildo Drive you decided to take. As you hopelessly waited for help, you die due to blood loss"
+    "While you were unconscious, no one passed by the sketchy Dildo Drive you decided to take. As you hopelessly waited for help, you die due to blood loss"
     return
 
-label peechewending: 
+label peechewending:
     "Weird Ending."
-    return 
+    return
 
+label chickened_ending:
+    scene bg chicken with fade
+    play sound "<from 0.5 to 2.5>audio/chicken.mp3" volume 0.5
+    "How could you do this? Our protagonist. The main characted of the story chickened out. We believed in you. Pitiful."
+
+    return
 
 label niceending:
     scene bg nightstreet with fade
@@ -1367,7 +1361,7 @@ label niceending:
 
 label veryniceending:
     scene bg nightstreet with fade
-    "You are walking home with Gavin after school. You try to act normal, hiding your blush. You feel that your heart is going to explode, all you hear is your heart going doki doki." 
+    "You are walking home with Gavin after school. You try to act normal, hiding your blush. You feel that your heart is going to explode, all you hear is your heart going doki doki."
     "Suddenly, you are filled with resolve. {i}You can do it!{/i}"
     "You turn to face Gavin."
     show gavin stern with dissolve
@@ -1392,10 +1386,9 @@ label veryniceending:
     "After that day, you and Gavin have been walking to school and back home everyday holding hands."
     "Gavin often shows his love to you in front of your classmates, making you blush, and both of you hang out almost every day after school to go on a date."
     "Your friends describe you guys as a “sweet couple. Your friends often envy that you have such a sweet boyfriend who is always by your side, protecting you at all cost. "
-
     return
 
-    
+
 label verybadending:
     scene bg rain
     "You and Gavin start to walk back home. You decided that this is a good time to confess to [g]."
@@ -1417,7 +1410,6 @@ label verybadending:
 
     m "I.. I really mean it. I mean it from the bottom of my heart! I- I know this is very sudden but, but I hope that you un-understand my feelings, I-I really really meant it."
 
-    
     "Gavin’s face turns incredulous for a moment, only being able to be described as *NANI?!?*"
     show gavin villianstare with dissolve
     g "[name]-chan. Thank you for telling me your feelings towards me."
@@ -1435,9 +1427,7 @@ label verybadending:
     "You feel water droplets on your face, but you can’t quite tell if it’s tears or the rain."
 
     return
-    
-    
-#TODO if have time
+
+
+# TODO if have time
 # chicken pic and sound for chicken out ending
-
-
