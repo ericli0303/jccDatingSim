@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 399: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "Should I pocket the poop?"
-                               ^
+File "game/script.rpy", line 821: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "Dick in a box"
+                   ^
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Thu Feb 11 23:08:41 2021
+Fri Feb 12 00:13:22 2021
