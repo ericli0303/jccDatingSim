@@ -22,6 +22,7 @@ image gavin excited = "gavin excited 1.png"
 image gavin surprised = "gavin surprised 1.png"
 image gavin thinking = "gavin thinking 1.png"
 image gavin villiansmile = "gavin villian smile 1.png"
+image gavin villianstare = "gavin villian stare 1.png"
 image construction = "construction worker.png" # construction
 
 
@@ -739,11 +740,13 @@ label dog_over:
                 g "Here, take a bite of this."
                 hide gavin
                 hide bff
+                show maki with disssolve at right
                 "You lean across the table and take it into your mouth. It’s seaweed wrapping feels smooth against your tongue."
                 "It goes deeper and deeper, until it is pressed up against the back of your throat."
                 "*Chomp*"
                 "You bite down and the roll’s flavors burst into your mouth."
                 "{i}Sooo delicious!{/i}"
+                hide maki
                 show gavin bigsmile at right with easeinright
                 g "Looks like you liked it. Here, have the rest of my roll."
                 "{i}It’s kind of exciting getting fed by [g]-san like this.{/i}"
@@ -1234,7 +1237,19 @@ label walk:
             "What should I give him?"
 
             "Chocolates" if "chocolates" in inventory:
+                "You pull out the box of chocolates that you bought earlier."
+                show gavin excited with dissolve
+                g "What's this? Are these… Valentine’s Day chocolates?"
+                "Gavin opens the box."
+                show gavin thinking with dissolve
+                g "*Sniff, sniff*"
+                show gavin excited with dissolve
+                g "These are raspberry chocolates! How did you know to get these? Raspberry flavor is my favorite!"
+                g "*Chomp*"
+                g "Wow, they're so delicious!"
+                
 
+                totalScore += 40 
             
             "Money" if "money" in inventory:
                 "You pull out the wad of money that you found earlier in the day."
@@ -1306,6 +1321,7 @@ label peechewending:
 
 
 label niceending:
+    scene bg nightstreet with fade
     "You and Gavin decide to walk back home together. You fidget with your hair wondering when you should confess to Gavin."
     "You take deep breaths, trying to calm down, as you feel that your heart is going to explode."
     "You keep on wondering how you should confess to Gavin-san, not realizing that you have already arrived at the intersection where you and Gavin are going to head in different directions."
@@ -1328,7 +1344,7 @@ label niceending:
     "GAME OVER - You got friendzoned"
 
 label veryniceending:
-    
+    scene bg nightstreet with fade
     "You are walking home with Gavin after school. You try to act normal, hiding your blush. You feel that your heart is going to explode, all you hear is your heart going doki doki." 
     "Suddenly, you are filled with resolve. {i}You can do it!{/i}"
     "You turn to face Gavin."
@@ -1339,6 +1355,7 @@ label veryniceending:
     scene otome with fade
     "When you open your eyes, you see that Gavin fell right above you. His hand is placed in between your head and the sidewalk. He must have jumped down to protect you."
     "His face is very close to yours. It’s like time has stopped. Gavin pulls you up, his face flush."
+
     g "Are you ok? So-Sorry, I hope you don’t get mad. By the way, what did you want to say earlier?"
     m "Ga-Gacchan, I- I like you. I- I have had feelings for you for a long time. I- I know this is sudden so you don’t have to answer me right now."
     g "[myName] chan, a-actually I- I was so scared just now when you fell. I-I was afraid that you got hurt, b-because I like you too!"
@@ -1348,17 +1365,19 @@ label veryniceending:
     g "Y-Yeah. I’ve  liked you since the day we met. I- I want to protect you. I don’t want you to think of me as a best friend. I-I want to be your boyfriend. P-please go out with me!"
     "Your eyes meet his in a tender gaze. He leans forward, bringing his lips closer, and closer..."
     "You meet him in the middle. Your lips intertwine with his in a brief, but sweet kiss."
-    
+    scene bg beach
     "After that day, you and Gavin have been walking to school and back home everyday holding hands."
     "Gavin often shows his love to you in front of your classmates, making you blush, and both of you hang out almost every day after school to go on a date."
     "Your friends describe you guys as a “sweet couple. Your friends often envy that you have such a sweet boyfriend who is always by your side, protecting you at all cost. "
 
     
 label verybadending:
+    scene bg rain
     "You and Gavin start to walk back home. You decided that this is a good time to confess to [g]."
 
     m "Gachan, I, have something to tell you."
 
+    show gavin confused with dissolve
     g "What’s the matter? [myName]-chan"
 
     m "Actually, I, I started having feelings for you. I-know that this is so- so sudden, but I just want to say that I like you."
@@ -1366,14 +1385,16 @@ label verybadending:
     "You look at the ground as you feel your face heat up."
     "Gavin stares at you, with a awkward smile"
 
+    show gavin bigsmile with dissolve
     g "Errrrm, [name]-chan, was this a prank that someone put you up to? They dared you to say this right?"
 
     "You shake your head."
 
     m "I.. I really mean it. I mean it from the bottom of my heart! I- I know this is very sudden but, but I hope that you un-understand my feelings, I-I really really meant it."
 
+    
     "Gavin’s face turns incredulous for a moment, only being able to be described as *NANI?!?*"
-
+    show gavin villianstare with dissolve
     g "[name]-chan. Thank you for telling me your feelings towards me."
     g "I’m sorry."
     g "I don’t think we are suitable for each other. You view things... differently than I do."
@@ -1381,13 +1402,17 @@ label verybadending:
 
     "You try to get a glimpse of Gavin’s expression, as he turns to walk away"
 
+    show gavin stern with dissolve
     g "More importantly, I like someone else…"
 
+    hide gavin
     "You try to hold back your tears as you look up at the sky, noticing that it’s starting to rain."
     "You feel water droplets on your face, but you can’t quite tell if it’s tears or the rain."
 
     return
     
     
+#TODO if have time
+# chicken pic and sound for chicken out ending
 
 
