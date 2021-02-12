@@ -162,6 +162,7 @@ label start:
     scene bg_suburban_street
     with fade
 
+    # TODO: CHANGE MUSIC TO OUTDOOR STREET MUSIC
     "You step out the front door onto your cozy neighborhood street."
 
     "The weather is beautiful, so you might as well walk to school today. It’s only a 20 minute stroll from here."
@@ -214,11 +215,13 @@ label chihuahua:
     "Taking Chihuahua Court is probably the best option…"
     "You keep walking, and walking. Chihuahua Court is scenic for sure."
     scene bg toriigate with fade
+    # TODO: ADD MUSIC
     "You walk over a wide wooden bridge which passes over a creek. Nearby you spot a torii gate, which marks the entrance to your local shrine. "
     menu:
         "Do you want to stop by for a quick prayer?"
 
         "Yes":
+            $ totalScore += 5
             "You stop in your tracks, then head through the gate into the shrine’s courtyard."
             # TODO: INSERT OFFERING BOX PIC
             "You stop in front of the offering box."
@@ -284,7 +287,7 @@ label street_over:
     else:
         show shiba normal at right with easeinright
     "Dog" "WOOF WOOF BARK BARK."
-    $ dog = Chihuahua if "chihuahua" else "shiba"
+    $ dog = "chihuahua" if Chihuahua else "shiba"
     "A [dog] bounds up to you and tries to jump in your face."
 
     $ containsDildo = "dildo" in inventory
@@ -459,6 +462,7 @@ label dog_over:
 ################################################
 ##         IN HOMEROOM                        ##
 ################################################
+    # TODO CHANGE TO SCHOOL MUSIC
     scene bg_school_room with fade
     "You arrive in your homeroom, out of breath from running."
     show bff delighted at right with easeinright
@@ -540,12 +544,13 @@ label dog_over:
             show nemesis sad with dissolve
             "*Kiomi starts crying*"
             g "What was that for [myName]-san?"
+            # TODO GAVIN CHANGE EXPRESSION
             g "Don't worry Kiomi-san, I'll help you pick these up."
             "[g] and Kiomi drop to the floor and start picking up the chocolates."
             g "See, they’re still fine to eat!"
-            "*gulp*"
-            g "Wow these are delicious! This was super sweet of you, Kiomi-chan!"
+            "*gulp*"            
             show gavin excited with dissolve
+            g "Wow these are delicious! This was super sweet of you, Kiomi-chan!"
             show nemesis smile with dissolve
             kiomi "*sniff* You really mean it?"
             "[g] turns to face you"
@@ -564,7 +569,8 @@ label dog_over:
 
     show nemesis smile2 with dissolve
     kiomi "[g]-san..."
-    "I have something I want to tell you-"
+    kiomi "I have something I want to tell you-"
+
 
 
     play sound "audio/bell.mp3"
@@ -598,8 +604,9 @@ label dog_over:
     "Your next class is Pre-Calculus."
     teacher "Combination is nCr..."
     teacher "... so what is the probability of getting rejected on Valentine's Day? ..."
-    teacher "... when gavin fold's his pants in thirds ..."
+    teacher "... when gavin folds his pants in thirds ..."
     "{i}Ugh, boring.{/i}"
+
 
     "..."
 
@@ -612,7 +619,7 @@ label dog_over:
 ################################################
     scene bg cafeteria with fade
 
-    "Your stomach grumbles as you head to the cafeteria.Your stomach grumbles as you head to the cafeteria."
+    "Your stomach grumbles as you head to the cafeteria."
     unknown "[myName]-san!!! Over here!"
     "You hear a voice beckon you. That's [mbff]-san, [g]'s best friend."
     "{i}It’s not like I’m jealous of him or anything… Baka.{/i}"
@@ -778,7 +785,7 @@ label dog_over:
     m "{i}Oh no... She’s doing it again...{/i}"
     show male bff concerned with dissolve
     mbff "Oh… Yes, right, of course."
-    "[mbff] leaves a heavy sigh"
+    "[mbff] leaves a heavy sigh."
     mbff "..."
     mbff "You know, I have been wanting to tell you this, but you don’t have to be so defensive in front of me."
     show bff angry with dissolve
@@ -786,11 +793,11 @@ label dog_over:
     mbff "But"
     show male bff hold glasses
     mbff "I’m glad that you are giving it to me though, whatever reason it might be."
-    "[bff] blushes a little"
+    "[bff] blushes a little."
     show bff annoyed
-    bff "Um… well I told you I-I just made too many of them…"
+    bff "Um... well I told you I-I just made too many of them..."
     mbff "Yeah?"
-    "He chuckles a little"
+    "He chuckles a little."
     show male bff neutral
     mbff "Well, you know, sometimes I also like that part about yo-"
     
@@ -818,7 +825,12 @@ label dog_over:
     "You walk by the shop to assess your options."
     "{i}Dang these are expensive.{/i}"
     "{i}But they sell dark chocolates with raspberry filling! Those are [g]-san’s favorites!{/i}"
-    
+
+    python:
+        if "chocolates" in inventory:
+            inventory.remove("chocolates")
+            inventory.add("money")
+
     menu:
 
         "Should I get something for Gavin?"

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1042: end of line expected.
-    show gavin satisfied with easeinleft at left
-                                         ^
+File "game/script.rpy", line 224: expected statement.
+    totalScore += 5
+               ^
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Fri Feb 12 02:47:54 2021
+Fri Feb 12 17:08:46 2021
