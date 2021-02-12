@@ -47,7 +47,7 @@ label start:
 
     scene bg_room_morning_1
     with fade
-    play music "audio/soundtrack1.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
+    play music "audio/morning.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
 
     menu:
         # Difficulty Level
@@ -161,6 +161,8 @@ label start:
 ################################################
     scene bg_suburban_street
     with fade
+
+    play music "audio/walkschool.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
 
     "You step out the front door onto your cozy neighborhood street."
 
@@ -457,6 +459,8 @@ label dog_over:
 ##         IN HOMEROOM                        ##
 ################################################
     scene bg_school_room with fade
+    play music "audio/soundtrack2.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
+
     "You arrive in your homeroom, out of breath from running."
     show bff delighted at right with easeinright
     bff "Ohayou [myName]-san! You're late, as usual {i}hehe.{/i}"
@@ -585,6 +589,8 @@ label dog_over:
 ################################################
 ##         CLASSES 1                          ##
 ################################################
+    play music "audio/class.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
+
     "Your first class of the day is Biology."
     teacher "Hormones are a regulatory substance... ..."
     teacher "... Control metabolism..."
@@ -607,6 +613,7 @@ label dog_over:
 ##        LUNCH                               ##
 ################################################
     scene bg cafeteria with fade
+    play music "audio/lunch.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
 
     "Your stomach grumbles as you head to the cafeteria.Your stomach grumbles as you head to the cafeteria."
     unknown "[myName]-san!!! Over here!"
@@ -833,6 +840,7 @@ label dog_over:
 ##         ClASSES 2                          ##
 ################################################
     scene bg_school_room with fade
+    play music "audio/class.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
 
     "You head to English class."
     " “... Peter piper picked ...” "
@@ -964,6 +972,7 @@ label dog_over:
 ##        AMERICAN CULTURE CLUB               ##
 ################################################
     scene bg_classroom1 with fade
+    play music "audio/soundtrack2.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
 
     "{i}Phew, classes are over now, and American Culture Club starts in 5 minutes.{w} [g]-san should be there, so that’s when I’ll confess to him. {/i}"
 
@@ -1053,7 +1062,9 @@ label karaokenotinvite:
 ################################################
 
 label karaoke:
+
     scene bg_kareoke with fade
+    play music "audio/karaoke.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
 
     show gavin excited at right with easeinright
 
@@ -1149,6 +1160,7 @@ label karaoke:
 ##         HEADING HOME/PRE-ENDING            ##
 ################################################
 
+    play music "audio/walkhome.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
     scene bg_kareoke with fade
 
     "You hear a knock at the door to your karaoke room."
@@ -1335,6 +1347,7 @@ label chickened_ending:
     return
 
 label niceending:
+    play music "audio/niceneding.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
     scene bg nightstreet with fade
     "You and Gavin decide to walk back home together. You fidget with your hair wondering when you should confess to Gavin."
     "You take deep breaths, trying to calm down, as you feel that your heart is going to explode."
@@ -1360,6 +1373,7 @@ label niceending:
     return
 
 label veryniceending:
+    play music "audio/niceneding.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
     scene bg nightstreet with fade
     "You are walking home with Gavin after school. You try to act normal, hiding your blush. You feel that your heart is going to explode, all you hear is your heart going doki doki."
     "Suddenly, you are filled with resolve. {i}You can do it!{/i}"
@@ -1390,6 +1404,7 @@ label veryniceending:
 
 
 label verybadending:
+    play music "audio/badending.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
     scene bg rain
     "You and Gavin start to walk back home. You decided that this is a good time to confess to [g]."
 
