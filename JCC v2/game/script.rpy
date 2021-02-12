@@ -12,11 +12,7 @@ define unknown = Character('???') # used as placeholder for unknown
 define teacher = Character('Teacher')
 
 image gavin bigsmile = "gavin_big_smile_1.png"
-image construction = "construction worker.png" # constructio
-image bff smug = "bff_smug.png" # equivalent to bff smug
-image bff smile = "bff_smile.png"
-image bff delighted = "bff_delighted.png"
-image bff shocked = "bff_shocked.png"
+image construction = "construction worker.png" # construction
 
 
 default totalScore = 0
@@ -26,6 +22,7 @@ default isAsian = False
 default Chihuahua = False
 default outfit = ""
 default mainDish = ""
+
 
 # The game starts here.
 
@@ -38,8 +35,7 @@ label start:
 
     scene bg_room_morning_1
     with fade
-    play music "audio/soundtrack1.mp3" fadein 1.0 volume 0.3
-    queue music "audio/soundtrack2.mp3"  volume 0.3
+    play music "audio/soundtrack1.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
 
     menu:
     # Difficulty Level
@@ -83,15 +79,15 @@ label start:
         "Female":
             $ totalScore
 
-    play sound "<from 1.5 to 2.5>audio/alarm.mp3" volume 0.6  # TODO: BEEP SOUND
+    play sound "<from 2.4 to 4.6>audio/alarm.mp3" volume 0.7 
     "\"BEEP BEEP BEEP BEEP...\" your alarm is going off."
     "You get up but --"
     with vpunch
     m "Ouch!"
     "You hit your head on your shelf"
-    "What day is it?"
+    "{i}What day is it?{/i}"
     with hpunch
-    "What?! It’s Valentine’s Day!?!"
+    "{i}What?! It’s Valentine’s Day!?!{/i}"
     "Your heart begins to beat wildly"
     m "Today’s the day I’ve been waiting for. I am going to confess my love to Gavin!"
     m "But I’m so nervous… Will he like me back?"
@@ -217,6 +213,7 @@ label chihuahua:
 # Dildo Drive
 label dildo:
     scene bg_dildoway
+    play music "audio/boss music.mp3" volume 0.5
     with fade
     "You head down the road a little longer and turn onto Dildo Drive. "
     "The road is narrow and winding. Buildings here have exposed pipes rusting in the elements. Brick fences are crumbling, and trash piles up in corners. Occasionally you see people loitering on the sidewalks. Some of them stare at you as you walk by. "
@@ -225,12 +222,13 @@ label dildo:
     "A raspy, growling voice" "hey cute girl, come over here."
     "You feel a poke on your lower back"
     "Surprised and scared, you start running down the road. The road slopes downwards pretty intensely here."
-    if(!isAsian):
+    if(not isAsian):
         "{b}thump, thump, thump{/b} go footsteps behind you. Faster, faster!"
         "Because of the steep incline, you lose your balance and fall…"
         with hpunch
         with hpunch
         with hpunch
+        play sound "audio/game over.mp3" volume 0.5
         "\"{b}THUD{/b}\""
         "You tumble down the hill, bouncing off of the ground repeatedly as you fall helplessly."
         "Your body comes to a sudden, painful halt, as you hit a light post and your limp body curls around it."
@@ -245,11 +243,12 @@ label dildo:
         "Breathing heavily, you cautiously peek over the top to see if anyone followed you."
         "The street is empty, but suddenly you look down into the trash can, and it’s just… full of dildos!?"
         "You pull one out for safekeeping (though it looks a bit yellow and crusty)- but also for science (of course)."
-        inventory.add("dildo")
+        $ inventory.add("dildo")
         "Then you continue down the hilly street to school, turning onto a less trashy road."
 
 
 label street_over:
+    play music "audio/soundtrack1.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
     "{i}Whew, that was a tiring detour. Only 2 blocks to go!{/i}"
     "Rushing along, you are minding your own business until suddenly..."
     
@@ -263,24 +262,26 @@ label street_over:
 
         "Pet Dog":
             if Chihuahua:
-                $ totalScore -= 5
+                $ totalScore -= 2
+                jump petchew
             else:
-                $ totalScore += 10
+                $ totalScore += 5
                 jump petshiba
 
         "Kick Dog":
             if Chihuahua:
-                $ totalScore += 10
+                $ totalScore += 5
+                jump kickchew
             else:
-                $ totalScore -= 5
+                $ totalScore -= 3
+                jump kickshiba
 
         "Pee on Dog":
             if Chihuahua or isAsian:
                 # TODO: SOMETHING SHOULD HAPPEN
                 pass
             else:
-                # First bad ending
-                "Turns out the dog was Gavin's dog. He gets upset and pees on you. Bad Ending."
+                jump peeshiba
                 
         "Wield the dildo as a blade" if inventory.contains("dildo"):
             "hi" #TODO
@@ -288,31 +289,73 @@ label street_over:
 label petshiba:
     "{i}Awww what a cute doggo!{/i}"
     "You stop to ruffle the smol shib behind the ears as it wags its curly tail. You give the good woofer a nice butt rub and he closes his eyes in shiawasei bliss before you let him go from his lovely massage from a stranger and watch him stroll down the street."
+    jump dog_over
 
 label petchew:
     "{i}Well I guess you are into terrifying balls of hate that exude the arrogance of a humans in their small disease ridden bodies.{/i}"
     "Like idk why ANYONE would want to pet this small smelly thing, probably gonna get bitten but go for it."
     "You reach down to pet the dog but it growls at you."
-    
+    menu:
+        "Do you really wanna pet the dog?"
+        "Yes":
+            "Wow not even backing down from the aggressive growl."
+            "Well you’re driven today so you stick your hand in there against its will and probably the owners but whatever."
+            "You go for the classic head pat but before you get there its growl grows louder and you sense every cell is in danger."
+            menu:
+                "Do you continue?"
+                "Yes":
+                    "Welp, I guess you’re crazy but playing this game in the first place definitely says something."
+                    "You try to press your hand on its peanut sized head but as expected when your instinct screams in fright it goes in and attacks your kind being and pierces your skin."
+                    "Now you’re bleeding and more late for school, but you gain +3 determination."
+                "No":
+                    "Well, at least you followed your instincts in the end, you back off and head to school." 
+        "No":
+            "Yeah better off not petting it. You ignore the dog and head off to school."
+
+label kickshiba:
+    "{i}Ugh, this dog is about to make me more late!!{/i}"
+    "You give the dog a nice kick in the butt with the toe of your shoe."
+    "The dog whimpers and gives you a sad face as it hangs its head and tail between its legs."
+    jump dog_over
+
+label kickchew:
+    "You try to kick the dog, but it growls and quickly bites your leg."
+    "Your leg starts to bleed a bit and now you have to limp the rest of the way."
+    jump dog_over
+
+peeshiba
+    "YEAH ASSERT YOUR DOMINANCE!"
+    "Show the dog who’s boss. You let a fluid, continuous stream of pee out."
+    "Onlookers stare in half surprise and disgust while mothers shield their children's eyes from your distasteful act."
+    "Everyone seems too taken aback from your sudden action in Japan where no one strays from the norm, BUT out of the blue you hear a yell."
+    "????" "WTF, WHAT ARE YOU DOING TO TOFU-CHAN!!!!! IS THAT PEE!!!"
+    "Oh no, the owner is here but wait, why does your heart go aflutter at this tone."
+    "Why is there a bittersweet emotion stirring in your heart. You take a glace in the direction of the voice but want to hide deep down in a hole and escape this unbelievable reality."
+    g "Huh… wait… it can’t be… is that you [myName]-san…?"
+    m "Ahh.. G. Ga.. Gavin ummm I can explain"
+    "{i}Everything is falling apart. Why is he here now. Ah this is the worst.{/i}"
+    "{i}It was only a small pee that I have been holding in all day.{/i}"
+    "{i}I needed to relieve myself and feel top of my game before confessing but AHHHH now I want to dieeee.{/i}"
+    "{i}Wait but go back a second, he said \"Tofu-chan\" not just dog… This couldn’t possibly be his dog, right?{/i}"
 
 
 
+label dog_over:
 
     scene bg_school_room with fade
 
     "You arrive in your homeroom, out of breath from running."
 
     show bff delighted with easeinright
+    with fade
 
     bff "Ohayou [myName]-san! You're late, as usual {i}hehe.{/i}"
 
-    with fade
 
     "*She pulls you*"
-
-    menu:
-
-        show bff smug with dissolve
+    show bff smug with dissolve
+    
+    menu: 
         bff "*whispers* Say, you remember that it's Valentine's day right?"
 
         "Of course!":
@@ -324,30 +367,32 @@ label petchew:
             show bff laugh with dissolve
             bff "Don't be silly, I know you're head over heels for Gavin-san"
 
-    menu:
 
-        # show bff smile with dissolve
+    show bff smile with dissolve
+    menu:
         bff "So, are you going to give him chocolates?"
 
         "No, I can't...":
 
-            # show bff annoyed with dissolve
+            show bff annoyed with dissolve
             bff "Do it, you dummy! How else will he know that you have feelings for him?"
 
         "Shit, I forgot!":
 
-            # show bff annoyed with dissolve
+            show bff annoyed with dissolve
             bff "You dummy! How could you forget about something this important?"
 
-    # show bff smile with dissolve
+    show bff smile with dissolve
     bff "I hear the cafeteria is running a Valentine's Day special. You can buy chocolates there if you have enough money!"
 
     "..."
 
-    # show bff shocked with dissolve
+    show bff shocked with dissolve
     "Look! Gavin-san is here! Wait... What is happening?"
 
-    # hide bff
+    
+    
+    hide bff
     # Kiomi ARC
     kiomi "Gavin-san! Ohayou!"
     kiomi "I made something for you. I hope you like it..."
@@ -410,7 +455,7 @@ label petchew:
 
     "..."
 
-    # TODO: INSERT CLASS BELL SOUND
+    play sound "audio/bell.mp3"
 
     "{i}Yes! Class is finally over. It's lunch time! Hmm... I wonder what the cafeteria has today."
 
@@ -480,10 +525,10 @@ label petchew:
 
     if mainDish == "Tempura Udon":
         g "Tempura Udon! I love that stuff!"
-        g "Can I take a sip? Pleeease?"
 
         menu:
-
+            g "Can I take a sip? Pleeease?"
+            
             "{b}Sure!{/b}":
                 "Gavin reaches across the table and takes hold of your bowl of udon."
                 "He takes a generous sip of the steaming, decadent broth."
@@ -498,14 +543,62 @@ label petchew:
                 g "Maybe I should get my own bowl of udon..."
 
     elif mainDish == "Dino nuggies":
-        "Dino nuggies?! What are you, a child?"
+        g "Dino nuggies?! What are you, a child?"
+        "..."
 
+        menu:
+            g "I'm kidding, please share one with me! I love dino nuggies!"
 
-            "{i}{/i}"
-            "{i}{/i}"
-            "{i}{/i}"
-            "{i}{/i}"
+            "{b}Here you go{/b}":
+                "You gave Gavin a few of your Dino nuggies."
+                "He ate it with a big smile on his face. (like a kid)"
+                "You look at the way he eats and start smiling. He looks like an innocent child that’s trying dino nuggets for the first time. He looks so cute when he’s eating dino nuggets."
+                g "Thank’s [myName]-san! It’s been a while since I ate dino nuggies! They are delicious like always. Let me treat you dino nuggies for lunch tomorrow and we will eat it together!"
 
+            "{b}No! I want my precious Dino nuggies.":
+                g "Fine. I guess Dino nuggies are being loved by everyone."
+                "Gavin pouts slightly and wanted to stand up"
+                g "I’ll buy my own Dino nuggies then"
+
+    else:
+        g "Oh- That’s... an interesting choice for sure."
+        g "... Just a bit unconventional, that’s all."
+        "Gavin looks a little bit uncomfortable."
+        
+        menu:
+            g "Wait. Are you actually going to eat that?"
+        
+            "{b}Yeah.":
+                g "Umm, gross..."
+                "{i}He thinks my choice in food is gross! Ahhh! This is so embarrassing-{/i}"
+            
+            "{b}Actually, no. This is just a joke.":
+                g "Hahaha good one MC-san."
+                g "But since you actually paid for that, don’t you need some actual food to eat?"
+                g "Here, take some of my food instead."
+                "He grabs a long, uncut maki roll from his plate, holding it towards you."
+                g "Here, take a bite of this."
+                hide gavin
+                "You lean across the table and take it into your mouth. It’s seaweed wrapping feels smooth against your tongue."
+                "It goes deeper and deeper, until it is pressed up against the back of your throat."
+                "*Chomp*"
+                "You bite down and the roll’s flavors burst into your mouth."
+                "{i}Sooo delicious!{/i}"
+                g "Looks like you liked it. Here, have the rest of my roll."
+                "{i}It’s kind of exciting getting fed by Gavin-san like this.{/i}"
+                "{i}I hope we can do this more often.{/i}"
+                
+
+    "You feel BFF poke you in the leg, trying to get your attention."
+    show bff smile at left
+    "She leans over to whisper in your ear."
+    bff "[myName]-san, I think this is it. I think I’m going to give Gaybff-san chocolates now."
+    show bff smile2 with dissolve
+    bff "Wish me luck..."
+    "Oh and pay attention. You might learn something from me. Heehee…"
+    hide bff
+    show bff normal
+    bff "Ahem. Hey! Gaybff-san pay attention, I have something for you!"
 
 
     show gavin bigsmile

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 295: expected menuitem
-    show bff smug with dissolve
-    ^
+File "game/script.rpy", line 325: expected ':' not found.
+    label dog_over
+                  ^
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Thu Feb 11 20:15:17 2021
+Thu Feb 11 20:55:26 2021
