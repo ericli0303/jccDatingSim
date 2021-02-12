@@ -8,17 +8,24 @@ define g = Character('Gavin', color="#00FF00")  # uwu crush
 define m = Character('Me', color="#FFFFFF")  # ME the MC
 define bff = Character('Bff')  # the bestie of Me
 define kiomi = Character('Kiomi')  # the bitch
+define unknown = Character('???') # used as placeholder for unknown
+define teacher = Character('Teacher')
 
 image gavin bigsmile = "gavin_big_smile_1.png"
-image construction = "construction worker.png"
-image bff smug = "bff_smug.png"
+image construction = "construction worker.png" # constructio
+image bff smug = "bff_smug.png" # equivalent to bff smug
 image bff smile = "bff_smile.png"
+image bff delighted = "bff_delighted.png"
+image bff shocked = "bff_shocked.png"
+
 
 default totalScore = 0
+define inventory = set()
 default name = ""
 default isAsian = False
 default Chihuahua = False
 default outfit = ""
+default mainDish = ""
 
 # The game starts here.
 
@@ -78,7 +85,6 @@ label start:
 
     play sound "<from 1.5 to 2.5>audio/alarm.mp3" volume 0.6  # TODO: BEEP SOUND
     "\"BEEP BEEP BEEP BEEP...\" your alarm is going off."
-
     "You get up but --"
     with vpunch
     m "Ouch!"
@@ -177,6 +183,7 @@ label start:
 # Shiba Street
 label shiba:
     scene bg_urban_street
+    with fade
     "{i}Taking Shibuya Street is probably the best option…{/i}"
     "You backtrack a block or so until you are back on Shibuya Street. The street is full of honking cars in a traffic jam caused by something far away. Salarymen pack the sidewalks pushing in all directions, trying to get to their offices. "
     "Eventually you push your way through the biggest crowds and find a smaller road to walk on."
@@ -184,7 +191,8 @@ label shiba:
 
 # Chihuahua Court
 label chihuahua:
-    scene bg_suburban_street3
+    scene bg_suburban_street_3
+    with fade
     "Taking Chihuahua Court is probably the best option…"
     "You keep walking, and walking. Chihuahua Court is scenic for sure. You walk over a wide wooden bridge which passes over a creek. Nearby you spot a torii gate, which marks the entrance to your local shrine. "
     menu:
@@ -204,10 +212,12 @@ label chihuahua:
             "You pass the shrine and continue on the scenic route to school."
     "It takes several minutes, but you finally reach a road that will get you back on track. "
     "{i} I’ve wasted so much time going this way.{/i}"
+    jump street_over
 
 # Dildo Drive
 label dildo:
     scene bg_dildoway
+    with fade
     "You head down the road a little longer and turn onto Dildo Drive. "
     "The road is narrow and winding. Buildings here have exposed pipes rusting in the elements. Brick fences are crumbling, and trash piles up in corners. Occasionally you see people loitering on the sidewalks. Some of them stare at you as you walk by. "
     "{i}Ugh, it smells bad here. It’s like the smell of a dog who just got peed on by a human. Gross!{/i}"
@@ -215,28 +225,40 @@ label dildo:
     "A raspy, growling voice" "hey cute girl, come over here."
     "You feel a poke on your lower back"
     "Surprised and scared, you start running down the road. The road slopes downwards pretty intensely here."
-    if(isAsian):
+    if(!isAsian):
         "{b}thump, thump, thump{/b} go footsteps behind you. Faster, faster!"
         "Because of the steep incline, you lose your balance and fall…"
         with hpunch
         with hpunch
         with hpunch
-        "{b}THUD{/b}"
+        "\"{b}THUD{/b}\""
         "You tumble down the hill, bouncing off of the ground repeatedly as you fall helplessly."
         "Your body comes to a sudden, painful halt, as you hit a light post and your limp body curls around it."
         "{i}Shit, I can’t ask Gavin out like this…{/i} {w} you think as you close your eyes and slowly lose consciousness. "
         "{i}I really got screwed over by them.{/i}"
         return
     else:
-        "hi"  # TODO
+        "You hear the voice behind you say \"Shit, forget that brat.\""
+        "You keep running and pass by some person making weird moaning sounds by the back alleyway. {b}AIEEEEEE…{/b}"
+        "Not bothering to find out who called you a brat, you turn the corner and duck behind one of the nearby trash cans overflowing on the side of the street."
+        "\"pant pant\""
+        "Breathing heavily, you cautiously peek over the top to see if anyone followed you."
+        "The street is empty, but suddenly you look down into the trash can, and it’s just… full of dildos!?"
+        "You pull one out for safekeeping (though it looks a bit yellow and crusty)- but also for science (of course)."
+        inventory.add("dildo")
+        "Then you continue down the hilly street to school, turning onto a less trashy road."
+
 
 label street_over:
-    "hi"  # TODO: Add this
+    "{i}Whew, that was a tiring detour. Only 2 blocks to go!{/i}"
+    "Rushing along, you are minding your own business until suddenly..."
+    
+    play sound "<from 0 to 1.0>audio/bark.mp3" volume 0.7
+    show chihuahua at right with fade
+    "Dog" "WOOF WOOF BARK BARK."
+    "A dog bounds up to you and tries to jump in your face."
 
-    # TODO: INSERT A RANDOM DOG PIC
-    show chihuahua at right
-    play sound "bark.mp3"
-    "Awww! It's a cute dog! What are you going to do with it?"
+    "UWAH! What do you do?"
     menu:
 
         "Pet Dog":
@@ -244,6 +266,7 @@ label street_over:
                 $ totalScore -= 5
             else:
                 $ totalScore += 10
+                jump petshiba
 
         "Kick Dog":
             if Chihuahua:
@@ -258,12 +281,28 @@ label street_over:
             else:
                 # First bad ending
                 "Turns out the dog was Gavin's dog. He gets upset and pees on you. Bad Ending."
+                
+        "Wield the dildo as a blade" if inventory.contains("dildo"):
+            "hi" #TODO
+
+label petshiba:
+    "{i}Awww what a cute doggo!{/i}"
+    "You stop to ruffle the smol shib behind the ears as it wags its curly tail. You give the good woofer a nice butt rub and he closes his eyes in shiawasei bliss before you let him go from his lovely massage from a stranger and watch him stroll down the street."
+
+label petchew:
+    "{i}Well I guess you are into terrifying balls of hate that exude the arrogance of a humans in their small disease ridden bodies.{/i}"
+    "Like idk why ANYONE would want to pet this small smelly thing, probably gonna get bitten but go for it."
+    "You reach down to pet the dog but it growls at you."
+    
+
+
+
 
     scene bg_school_room with fade
 
     "You arrive in your homeroom, out of breath from running."
 
-    # show bff delighted with easeinright
+    show bff delighted with easeinright
 
     bff "Ohayou [myName]-san! You're late, as usual {i}hehe.{/i}"
 
@@ -273,16 +312,16 @@ label street_over:
 
     menu:
 
-        # show bff smug with dissolve
+        show bff smug with dissolve
         bff "*whispers* Say, you remember that it's Valentine's day right?"
 
         "Of course!":
 
-            # show bff shocked with dissolve
+            show bff shocked with dissolve
             bff "Ohh confident, aren't ya? Gavin-san is a lucky guy."
 
         "Confess to who?":
-            # show bff laugh with dissolve
+            show bff laugh with dissolve
             bff "Don't be silly, I know you're head over heels for Gavin-san"
 
     menu:
@@ -355,9 +394,123 @@ label street_over:
     bff "Tonight when [myName] confesses to him, you’ll see how hopeless your situation is!"
     bff "Come on, [myName]. Let’s go to class."
 
+    scene bg_classroom1
+
+    "Your first class of the day is Biology."
+    teacher "Hormones are a regulatory substance... ..."
+    teacher "... Control metabolism..."
+    teacher "... Involved with reproduction..."
+    "{i}Huh, what an interesting topic.{/i}"
+
+    "Your next class is Pre-Calculus."
+    teacher "Combination is nCr..."
+    teacher "... so what is the probability of getting rejected on Valentine's Day? ..."
+    teacher "... calculate the factorial..."
+    "{i}Ugh, boring.{/i}"
+
+    "..."
+
+    # TODO: INSERT CLASS BELL SOUND
+
+    "{i}Yes! Class is finally over. It's lunch time! Hmm... I wonder what the cafeteria has today."
+
+    # TODO: INSERT CAFETERIA IMAGE
+
+    "Your stomach grumbles as you head to the cafeteria.Your stomach grumbles as you head to the cafeteria."
+    unknown "[myName]-san!!! Over here!"
+    "You hear a voice beckon you. That's Gaybff-san, Gavin's annoying best friend."
+    "{i}It’s not like I’m jealous of him or anything… Baka.{/i}"
+    "Gaybff is sitting at a table with Gavin and BFF. He motions for you to take a seat with them."
+    "{i}I’ll go sit down with them after I grab some food.{/i}"
+    
+    menu:
+
+        "Speaking of which, what should I eat today?"
+
+        "Tempura Udon":
+            $ mainDish = "Tempura Udon"
+            "{i}They have tempura udon today! So delicious!{/i}"
+            "{i}Plus, I know Gavin-san likes this stuff. Maybe he’ll share with me, heehee.{/i}"
+
+        "Dino nuggies":
+            $ mainDish = "Dino nuggies"
+            "{i}I know it’s childrens’ food, but dino nuggies are so good!{/i}"
+            "{i}Should I really be stooping to a child’s level on Valentine’s Day?{/i}"
+            "{i}What if Gavin-san judges me?{/i}"
+            "{i}Oh, screw it. I can’t help myself.{/i}"
+
+        "Bowl of soy sauce":
+            $ mainDish = "Bowl of soy sauce"
+            "{i}I read in a beauty magazine that soy sauce helps clear your complexion!{/i}"
+            "{i}Of course I am going to eat this for lunch. I want to look beautiful for Gavin!{/i}"
+            
+        "Microwaved salad":
+            $ mainDish = "Microwaved salad"
+            "{i}I’m so stressed by all this Valentine’s Day drama. I just need to eat my No. 1 comfort food.{/i}"
+            "{i}A salad made of romaine lettuce and red onions, topped with ranch dressing and microwaved for 2 minutes! Mmm so good.{/i}"
+            "{i}It’s not a traditional option, but Gavin-san will understand. He’s open-minded like that.{/i}"
+
+    menu:
+
+        "{i}But this alone won't be enough for me. What side dish should I get?{/i}"
+
+        "Natto":
+            "{i}Some people think this is gross, but I love it!{/i}"
+
+        "Miso soup":
+            "{i}A classic, Japanese side dish like this will complement my [main dish] perfectly. {/i}"
+
+        "Lays Potato Chips®":
+            "{i}I learned about these the other day at American Culture Club.{/i}"
+            "{i}They’re salty, fatty, and delicious!{/i}"
+            "{i}But not very healthy… Whatever!{/i}"
+
+
+        "3 shots of vodka":
+            "{i}Heheh, I snuck a flask to school. Hopefully nobody notices that it’s not water!{/i}"
+            "{i}I need this liquid courage to ask Gavin out today!{/i}"
+    
+    "{i}I hope Gavin appreciates my good taste in food!{/i}"
+
+    "Food in hand, you head to the table and take a seat next to BFF-san."
+    bff "Hey slowpoke! Come on, let’s eat!"
+    g "Hi [myName]-san. What did you get to eat?"
+    
+    "..."
+
+    if mainDish == "Tempura Udon":
+        g "Tempura Udon! I love that stuff!"
+        g "Can I take a sip? Pleeease?"
+
+        menu:
+
+            "{b}Sure!{/b}":
+                "Gavin reaches across the table and takes hold of your bowl of udon."
+                "He takes a generous sip of the steaming, decadent broth."
+                "{i}His lips are touching my bowl so gently.{/i}"
+                "{i}If I drink from there, does it count as a kiss?{/i}"
+                "He puts your udon back down in front of you. Is that a small blush you see on his face?"
+                g "Thank’s [myName]-chan, that was delicious."
+
+            "{b}No way!{/b}":
+                g "Oh, okay then."
+                "Gavin looks longingly towards the soup station."
+                g "Maybe I should get my own bowl of udon..."
+
+    elif mainDish == "Dino nuggies":
+        "Dino nuggies?! What are you, a child?"
+
+
+            "{i}{/i}"
+            "{i}{/i}"
+            "{i}{/i}"
+            "{i}{/i}"
+
+
+
     show gavin bigsmile
 
-    if (totalScore}=1000):
+    if (totalScore == 1000):
 
         g "I love you"
 
