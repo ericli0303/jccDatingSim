@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 224: expected statement.
-    totalScore += 5
-               ^
+File "game/script.rpy", line 1138: expected statement.
+    totalScore -= 5
+                ^
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Fri Feb 12 17:08:46 2021
+Fri Feb 12 18:21:59 2021
