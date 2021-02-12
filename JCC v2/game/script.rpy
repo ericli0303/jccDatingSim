@@ -1072,6 +1072,7 @@ label karaoke:
         g "What song should we sing, [name]-chan? You pick!"
 
         "Grand Blue":
+            play music "audio/"
             g "YOOO THAT’S A STRAIGHT BANGER!!! ATSUKUNARE MY FRIENNNNDSS!"
 
             "*Play Grand Blue*"
