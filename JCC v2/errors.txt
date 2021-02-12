@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 821: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "Dick in a box"
-                   ^
+File "game/script.rpy", line 1042: end of line expected.
+    show gavin satisfied with easeinleft at left
+                                         ^
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Fri Feb 12 00:13:22 2021
+Fri Feb 12 02:47:54 2021

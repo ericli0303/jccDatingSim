@@ -23,6 +23,7 @@ image gavin surprised = "gavin surprised 1.png"
 image gavin thinking = "gavin thinking 1.png"
 image gavin villiansmile = "gavin villian smile 1.png"
 image gavin villianstare = "gavin villian stare 1.png"
+image gavin satisfied = "gavin satisfied 1.png"
 image construction = "construction worker.png" # construction
 
 
@@ -212,7 +213,7 @@ label chihuahua:
     scene bg_suburban_street_3 with fade
     "Taking Chihuahua Court is probably the best option…"
     "You keep walking, and walking. Chihuahua Court is scenic for sure."
-    # TODO: INSERT SHRINE PIC
+    scene bg toriigate with fade
     "You walk over a wide wooden bridge which passes over a creek. Nearby you spot a torii gate, which marks the entrance to your local shrine. "
     menu:
         "Do you want to stop by for a quick prayer?"
@@ -383,8 +384,11 @@ label peeshiba:
     g "I just… I just can’t believe this, who pees on a dog to cool it down. I just don’t know what to do."
     g "Tofu-chan come over here. Oh my, you're all wet we need to give you a nice wash right away."
     "After that… well you haven’t heard from [g] in a while. Whenever you try to apologize he isn’t having it."
-    "You feel terrible but after a few months [g] begins to talk to you. A year later you are friendly again but it’s never the same. He also hasn’t let you within a mile of a dog and looks at you in disgust whenever he sees you near a dog."
-    jump badending
+    "You feel terrible but after a few months [g] begins to talk to you. A year later you are friendly again but it’s never the same."
+    "He also hasn’t let you within a mile of a dog and looks at you in disgust whenever he sees you near a dog."
+    "Bad Ending"
+    return 
+    
 
 
 
@@ -455,7 +459,7 @@ label dog_over:
 ################################################
 ##         IN HOMEROOM                        ##
 ################################################
-    scene bg_room_morning_1 with fade
+    scene bg_school_room with fade
     "You arrive in your homeroom, out of breath from running."
     show bff delighted at right with easeinright
     bff "Ohayou [myName]-san! You're late, as usual {i}hehe.{/i}"
@@ -740,7 +744,7 @@ label dog_over:
                 g "Here, take a bite of this."
                 hide gavin
                 hide bff
-                show maki with disssolve at right
+                show maki at top with dissolve
                 "You lean across the table and take it into your mouth. It’s seaweed wrapping feels smooth against your tongue."
                 "It goes deeper and deeper, until it is pressed up against the back of your throat."
                 "*Chomp*"
@@ -756,7 +760,7 @@ label dog_over:
     
     "You feel [bff] poke you in the leg, trying to get your attention."
     "She leans over to whisper in your ear."
-    show bff smile2 with dissolve at left
+    show bff smile2 at left with dissolve
     bff "[myName]-san, I think this is it. I think I’m going to give [mbff]-san chocolates now."
     bff "Wish me luck..."
     show bff sad with dissolve
@@ -803,7 +807,7 @@ label dog_over:
     show bff shocked
     bff "Oh god, I can't believe I did that again, whyyyyy am I such a baka, why do I act like this!"
     show bff sad
-    bff "Oh no... why am I like this @#@#$@##%^%$^"
+    bff "Oh no... why am I like this @#@#$@##%%$"
     m "..."
     hide bff
     "{i}She was too drowned by her own thoughts, I doubt she heard what he was trying to say...{/i}"
@@ -817,6 +821,8 @@ label dog_over:
     
     menu:
 
+        "Should I get something for Gavin?"
+
         "Nevermind, I don't have enough money" if "money" not in inventory:
             "{i}This really sucks! If only I had miraculously found some money on the street earlier today.{/i}"
             "{i}Oh well… I’ll do my best to confess to him without chocolates.{/i}"
@@ -827,6 +833,7 @@ label dog_over:
         "Buying" if "money" in inventory: 
             "{i}Good thing I found some cash on the street earlier today, otherwise I wouldn’t be able to afford these.{/i}"
             "{i}Now I can do a real Valentine’s Day confession! Chocolates and all!{/i}"
+            $ inventory.remove("money")
             $ inventory.add("chocolates")
 
 ################################################
@@ -870,7 +877,7 @@ label dog_over:
             
             "[g] looks disappointingly at you"
 
-            totalScore -= 5
+            $ totalScore -= 5
 
         "3.9":
             teacher "Correct, the answer was 3.9."
@@ -879,16 +886,16 @@ label dog_over:
 
             "[g] nods approvingly"
 
-            totalScore += 5
+            $ totalScore += 5
 
-        "4.0"
+        "4.0":
             teacher "The answer is 3.9."
             
             "{i}What is this guy talking about? [g]-san is way too smart to only have a 3.9.{/i}"
 
             "[g] looks disappointingly at you"
 
-            totalScore -= 3
+            $ totalScore -= 3
     
     teacher "Question 2. What was [g]-san wearing this morning?"
 
@@ -904,7 +911,7 @@ label dog_over:
             
             "[g] shakes his head"
 
-            totalScore -= 5
+            $ totalScore -= 5
             
         "A redsocks cap":
             teacher "Incorrect, the answer is a maroon scarf."
@@ -913,7 +920,7 @@ label dog_over:
 
             "[g] shakes his head"
 
-            totalScore -= 5
+            $ totalScore -= 5
 
         "A maroon scarf":
             "Correct, [g] sure likes his scarfs."
@@ -922,7 +929,7 @@ label dog_over:
 
             "[g] smiles at you"
 
-            totalScore += 5
+            $ totalScore += 5
 
     teacher "Question 3. How does [g]-san fold his pants?"
 
@@ -938,7 +945,7 @@ label dog_over:
 
             "[g] facepalms"
             
-            totalScore -= 5
+            $ totalScore -= 5
 
         "In thirds":
             teacher "Correct, [g] is the only one weird enough that does this."
@@ -947,7 +954,7 @@ label dog_over:
 
             "[g] bites his lips"
             
-            totalScore += 5
+            $ totalScore += 5
 
         "In fourths":
             teacher "Incorrect, the answer is in thirds."
@@ -956,7 +963,7 @@ label dog_over:
 
             "[g] facepalms"
             
-            totalScore -= 5
+            $ totalScore -= 5
 
     "{i}That was a weird quiz. I wonder what that was all about...{/i}"
     
@@ -981,6 +988,7 @@ label dog_over:
     "{i}Americans have such an interesting culture. Ahh, someday I want to visit there.{/i}"
 
     show bff smile at right with easeinright 
+    hide gavin with dissolve
     "At the end of the discussion, [bff]-san comes over and pokes you to get your attention."
     "*poke poke*"
     bff "Sooo…"
@@ -993,8 +1001,10 @@ label dog_over:
             bff "YES FINALLY. I mean-"
             bff "It’s no big deal! Just go invite him, dummy!"
 
+            hide bff with dissolve
             "You finally build up the courage to ask [g] out to Karaoke. If you don’t act now you will miss your chance to grow closer!"
 
+            show gavin bigsmile with dissolve
             m "[g]-san, are you free after school today?"
 
             g "Yeah, I’m free. What’s the matter?"
@@ -1029,17 +1039,17 @@ label karaokenotinvite:
     show bff smug with dissolve
     bff "I’m gonna go now."
     bff "Ahem. [mbff]-kun!!! Get over here! Let’s get going!"
-    show male bff surprised with easeinleft at right
+    show male bff surprised at right with easeinleft
     mbff "!!!!"
-    hide male bff
-    hide bff
+    hide male bff with dissolve
+    hide bff with dissolve
     "{i}I'm kind of jealous of them.{/i}"
     "{i}I wish I had the courage to ask out [g]-san...{/i}"
     "{i}I should at least ask him to walk home with me.{/i}"
     "{i}After all, we’re going the same direction.{/i}"
     "{i}It’s my last chance…{/i}"
     "{i}I can’t screw this up.{/i}"
-    show gavin satisfied with easeinleft at left
+    show gavin satisfied at left with easeinleft
     "..."
     g "You wanna walk home together? Sure!"
     g "We can walk together to Chihuahua Court, but then I have to go my separate ways."
@@ -1226,8 +1236,8 @@ label karaoke:
 ################################################
 
 label walk:
-    scene bg_possible_farewell with fadein
-    show gavin satisfied easeinright at right
+    scene bg_possible_farewell with fade
+    show gavin satisfied with easeinright 
     "You and Gavin decide to walk back home together, when you realize your pockets feel awfully heavy..."
     if not inventory:
         "hm... there's nothing in my pockets... I must be going crazy..."
@@ -1247,9 +1257,18 @@ label walk:
                 g "These are raspberry chocolates! How did you know to get these? Raspberry flavor is my favorite!"
                 g "*Chomp*"
                 g "Wow, they're so delicious!"
-                
+                g "In fact, they’re better than the ones that Kiomi-chan gave me earlier today."
+                m "..."
+                show gavin bigsmile with dissolve
+                g "Oh, don’t worry about her. She told me how she felt earlier today, but I don’t feel the same way."
+                g "Not that I think you’d be worried about her..."
+                show gavin thinking with dissolve
+                "He seems to be deep in thought for a moment."
+                g "Anyways, this was really nice of you, [myName]-chan."
+                show gavin bigsmile with dissolve
+                g "Thank you."
 
-                totalScore += 40 
+                $ totalScore += 40 
             
             "Money" if "money" in inventory:
                 "You pull out the wad of money that you found earlier in the day."
@@ -1262,7 +1281,7 @@ label walk:
                 g "Oh it’s really just a heartfelt gift? That’s nice, I guess."
                 show gavin satisfied with dissolve
                 g "Well, anyways…"
-                totalScore += 10
+                $ totalScore += 10
 
             "Poop" if "poop" in inventory:
                 "You pull out the mushy poop from your pocket."
@@ -1276,7 +1295,7 @@ label walk:
                 g "Thanks, I guess… But honestly, no thanks."
                 "Gavin gestures for you to drop it on the curb."
                 g "Please don’t do that again…"
-                totalScore -=5
+                $ totalScore -=5
 
             "Dildo" if "dildo" in inventory:
                 "You pull the floppy yellow dildo out from your pack. It’s still crusty."
@@ -1288,16 +1307,17 @@ label walk:
                 "..."
                 g "I guess I’ll take it… For science reasons…"
                 g "But just so you know, that was totally uncalled for. You probably shouldn’t give gifts like that."
-                totalScore += 5
+                $ totalScore += 5
 
         jump calculateending
 
 
 
 label calculateending:
+    show gavin satisfied with dissolve
     if totalScore >= 100:
         jump veryniceending
-    elif totalScore >= 60:
+    elif totalScore >= 20:
         jump niceending
     else:
         jump verybadending
@@ -1343,11 +1363,14 @@ label niceending:
     g "Maybe someday my feelings will change, if you still have feelings for me at that time. So don’t be sad."
     "GAME OVER - You got friendzoned"
 
+    return
+
 label veryniceending:
     scene bg nightstreet with fade
     "You are walking home with Gavin after school. You try to act normal, hiding your blush. You feel that your heart is going to explode, all you hear is your heart going doki doki." 
     "Suddenly, you are filled with resolve. {i}You can do it!{/i}"
     "You turn to face Gavin."
+    show gavin stern with dissolve
     m "Ga- Gacchan. I- I"
     "Just as you are about to tell Gavin your true feelings, a motorcycle rushes by too close for comfort. In surprise, you lose your balance."
     "*Crash*"
@@ -1369,6 +1392,8 @@ label veryniceending:
     "After that day, you and Gavin have been walking to school and back home everyday holding hands."
     "Gavin often shows his love to you in front of your classmates, making you blush, and both of you hang out almost every day after school to go on a date."
     "Your friends describe you guys as a “sweet couple. Your friends often envy that you have such a sweet boyfriend who is always by your side, protecting you at all cost. "
+
+    return
 
     
 label verybadending:
