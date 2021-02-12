@@ -1,26 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 171, in script
-    python:
-  File "game/script.rpy", line 172, in <module>
-    if inventory.contains("dildo"):
-AttributeError: 'RevertableSet' object has no attribute 'contains'
+  File "game/script.rpy", line 677, in script
+    show male bff concerned at rigth with easeinright
+  File "game/script.rpy", line 677, in <module>
+    show male bff concerned at rigth with easeinright
+NameError: name 'rigth' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 171, in script
-    python:
-  File "renpy/ast.py", line 922, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "renpy/python.py", line 2218, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/script.rpy", line 172, in <module>
-    if inventory.contains("dildo"):
-AttributeError: 'RevertableSet' object has no attribute 'contains'
+  File "game/script.rpy", line 677, in script
+    show male bff concerned at rigth with easeinright
+  File "renpy/ast.py", line 1191, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "renpy/ast.py", line 1150, in show_imspec
+    at_list = [ renpy.python.py_eval(i) for i in at_list ]
+  File "renpy/python.py", line 2249, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "renpy/python.py", line 2242, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 677, in <module>
+    show male bff concerned at rigth with easeinright
+NameError: name 'rigth' is not defined
 
 Windows-10-10.0.19041
 Ren'Py 7.4.2.1292
 Doki Doki President 2.0
-Thu Feb 11 22:24:14 2021
+Thu Feb 11 23:00:39 2021

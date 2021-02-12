@@ -6,11 +6,11 @@
 
 define g = Character('Gavin', color="#00FF00")  # uwu crush
 define m = Character('Me', color="#FFFFFF")  # ME the MC
-define bff = Character('Bff')  # the bestie of Me
-define kiomi = Character('Lulu')  # the bitch
+define bff = Character('Lulu')  # the bestie of Me
+define kiomi = Character('Kiomi')  # the bitch
 define unknown = Character('???') # used as placeholder for unknown
 define teacher = Character('Teacher')
-define mbff = Character('Gaybff')
+define mbff = Character('Kawazawa')
 
 image gavin bigsmile = "gavin big smile 1.png"
 image gavin confused = "gavin confused 1.png"
@@ -18,6 +18,7 @@ image gavin stern = "gavin stern 1.png"
 image gavin shock = "gavin shock 1.png"
 image gavin excited = "gavin excited 1.png"
 image gavin surprised = "gavin surprised 1.png"
+image gavin thinking = "gavin thinking 1.png"
 image construction = "construction worker.png" # construction
 
 
@@ -264,12 +265,12 @@ label street_over:
     "Rushing along, you are minding your own business until suddenly..."
     
     play sound "<from 0 to 1.0>audio/bark.mp3" volume 0.7
-    if(Chihuahua)
-        show chihuahua at right with fade
-    else
-        #TODO for Shiba
+    if(Chihuahua):
+        show chihuahua at right with easeinright
+    else:
+        show shiba at right with easeinright
     "Dog" "WOOF WOOF BARK BARK."
-    $ dog = Chihuahua ? "chihuahua" : "shiba"
+    $ dog = Chihuahua if "chihuahua" else "shiba"
     "A [dog] bounds up to you and tries to jump in your face."
 
     $ containsDildo = "dildo" in inventory
@@ -292,8 +293,7 @@ label street_over:
                 jump kickshiba
 
         "Pee on Dog":
-            if Chihuahua or isAsian:
-                
+            if Chihuahua or isAsian:                
                 jump peechew
             else:
                 jump peeshiba
@@ -303,6 +303,7 @@ label street_over:
             "The dog yanks the dildo from your hand, leaving you defenseless, and runs a"
             "{i}There goes my science experiment...{/i}"
             $ inventory.remove("dildo")
+            jump dog_over
 
     
 
@@ -381,7 +382,44 @@ label peechew:
     "You and Gavin make awkward eye contact."
     jump weirdending
 
+#End of Dog Scene
 label dog_over:
+    "As you speed walk the next block, something on the ground suddenly catches your eye."
+    "{i}Oh look there’s something shiny and brown on the ground!{/i}"
+    menu:
+        "Should I pick it up?"
+
+        "Yes":
+            "{i}Hmmm I wonder what it is?{/i}"
+            "You reach down and attempt to pick up this shiny and brown thing."
+            with hpunch
+            m "EWWWWWWW!" 
+            "There is now a big piece of dog poop in your hand and it feels squishy between your fingers."
+            menu:
+                "Should I pocket the poop?"
+                    "Yes":
+                        "This might be useful later..."
+                        "You pocket the poop and wipe your hand on some nearby grass."
+                        m "That should do it."
+                    "No": 
+                        "Yuck!"
+                        "Dropping the poop like a hot potato, you frantically look around for a tissue to wipe your hands with and accidentally brush your leg."
+                        "{i}Ugh, what kind of poopy person doesn’t pick up after their dog?{/i}"
+                        "Finally you get the poop off your hand, but you smell a bit funny. Oh well."
+            
+        "No":
+            "{i}I don’t have time to pick up random things off the ground!! I need to get to school!{/i}"
+        
+    "A few paces later, you see another thing on the ground."
+    "{i}Oh look there’s another shiny and brown thing on the ground!{/i}"
+
+    menu:
+        "Should I pick it up?"
+        "Yes":
+            "Wow look at this free money!! I wonder what I can do with it!"
+        "No":
+            "I don’t have time to pick up random things off the ground!! I need to get to school!"
+
 
     scene bg_school_room with fade
     "You arrive in your homeroom, out of breath from running."
@@ -435,7 +473,7 @@ label dog_over:
     show gavin bigsmile at left with easeinleft
     "Look! Gavin-san is here! Wait... What is happening?"
 
-    hide bff with dissolve
+    hide bff
     # Kiomi ARC
     show nemesis delighted at right with easeinright
     kiomi "Gavin-san! Ohayou!"
@@ -490,12 +528,12 @@ label dog_over:
     "Just before Kiomi is about to finish saying something, the school bell goes off. It is time for your first class."
     g "Ah, it's time for class. See you guys later. Thanks again for the chocolates Kiomi-chan!"
     "Gavin runs off to his first class"
-    hide gavin with dissolve
+    hide gavin 
     show nemesis smug with dissolve
     "Kiomi-san glares at yoo... Then grins."
     kiomi "He's mine, loser." 
     bff "Shut up. We all know Gavin-san likes [myName]-san, so you're out of luck."
-    show bff angry with dissolve
+    show bff angry at left with easeinleft
     bff "Tonight when [myName] confesses to him, you’ll see how hopeless your situation is!"
     bff "Come on, [myName]. Let’s go to class."
 
@@ -519,7 +557,7 @@ label dog_over:
 
     "{i}Yes! Class is finally over. It's lunch time! Hmm... I wonder what the cafeteria has today."
 
-    # TODO: INSERT CAFETERIA IMAGE
+    scene bg cafeteria with fade
 
     "Your stomach grumbles as you head to the cafeteria.Your stomach grumbles as you head to the cafeteria."
     unknown "[myName]-san!!! Over here!"
@@ -563,7 +601,7 @@ label dog_over:
             "{i}Some people think this is gross, but I love it!{/i}"
 
         "Miso soup":
-            "{i}A classic, Japanese side dish like this will complement my [main dish] perfectly. {/i}"
+            "{i}A classic, Japanese side dish like this will complement my [mainDish] perfectly. {/i}"
 
         "Lays Potato Chips®":
             "{i}I learned about these the other day at American Culture Club.{/i}"
@@ -578,9 +616,9 @@ label dog_over:
     "{i}I hope Gavin appreciates my good taste in food!{/i}"
 
     "Food in hand, you head to the table and take a seat next to Lulu-san."
-    show bff delighted with easeinleft
+    show bff delighted at left with easeinleft
     bff "Hey slowpoke! Come on, let’s eat!"
-    show gavin bigsmile with easeinright
+    show gavin bigsmile at right with easeinright
     g "Hi [myName]-san. What did you get to eat?"
     
     "..."
@@ -643,35 +681,48 @@ label dog_over:
             
             "{b}Actually, no. This is just a joke.":
                 show gavin bigsmile with dissolve
-                g "Hahaha good one MC-san."
+                g "Hahaha good one [myName]-san."
                 g "But since you actually paid for that, don’t you need some actual food to eat?"
                 g "Here, take some of my food instead."
                 "He grabs a long, uncut maki roll from his plate, holding it towards you."
                 g "Here, take a bite of this."
                 hide gavin
+                hide bff
                 "You lean across the table and take it into your mouth. It’s seaweed wrapping feels smooth against your tongue."
                 "It goes deeper and deeper, until it is pressed up against the back of your throat."
                 "*Chomp*"
                 "You bite down and the roll’s flavors burst into your mouth."
                 "{i}Sooo delicious!{/i}"
-                show gavin bigsmile with easeinright
+                show gavin bigsmile at right with easeinright
                 g "Looks like you liked it. Here, have the rest of my roll."
                 "{i}It’s kind of exciting getting fed by Gavin-san like this.{/i}"
                 "{i}I hope we can do this more often.{/i}"
-                
-
+                        
+      
+    
     "You feel Lulu poke you in the leg, trying to get your attention."
-    show bff smile at left with easeinleft
     "She leans over to whisper in your ear."
     bff "[myName]-san, I think this is it. I think I’m going to give Kawazawa-san chocolates now."
     show bff smile2 with dissolve
     bff "Wish me luck..."
     bff "Oh and pay attention. You might learn something from me. Heehee…"
-    hide bff with dissolve
-    show bff normal
+    hide gavin
+    # TODO: CHANGE TEXT SIZE
+    # TODO: Show Kawazaw
     bff "Ahem. Hey! Kawazawa-san pay attention, I have something for you!"
-    bff "Don't be surprised about it. I just ended up making too many of them. It's not because of vaalentines or something. I just think that you might not get any from others. It’s not that I like you or something, Baka."
-    "{i}She took out a heart-shaped box from her bag and put it on the table.{/i}"
+    show male bff concerned at right with easeinright
+    "{i}She takes out a heart-shaped box from her bag and put it on the table.{/i}"
+    bff "Don't be surprised about it. I just ended up making too many of them."
+    bff "I didn’t make chocolates for you because it’s Valentine’s or anything, I just thought that you might not get any from others."
+    mbff "EHH???"
+    "You see him turning red at the cheeks"
+    bff "Don't get the wrong idea... It's not that I like you or anything, baka!"
+    mbff "I just didn't know that you also-"
+    "He stops abruptly, and puts on a scrowl"
+    mbff "I-I didn't know that you know how to make chocolates!"
+    mbff "Also, what do you mean that you don't like me?"
+    mbff "Of course I knew that… I’m just disap- not disappointed of course, you idiot."
+    
     mbff "HUH? WOW I didn’t expect {b}you{/b} to know how to make chocolate. Also, what do you mean “don’t think that you like me or something.” Of course I won’t. I will take this because it’s sad that you have no other person to give. But that doesn’t mean I like you! I took it just because the colour of the packaging is nice. Don’t think too much you baka."
     # TODO: LOOKS AWAY WITH A BIT OF BLUSH
     mbff "And- And if you really like me make your actions look like that. Stop throwing things at me and call me baka. Because you are the Baka that’s cute when you shut your mouth! And when you do that I have the urge to protect you since you are a clumsy idiot!"
@@ -680,8 +731,8 @@ label dog_over:
     g "Get a room, you two."
     g "Ah, it looks like lunch period is just about over."
     g "See you all at club after classes!"
-    mbff "Yea, see y’all later. Th- Thanks again for the chocolates BFF-san."
-    bff 
+    mbff "Yea, see y’all later. Th- Thanks again for the chocolates [bff]-san."
+    # bff TODO:
 
     show gavin bigsmile 
     with easeinleft
