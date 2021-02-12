@@ -1,24 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 225, in script
-    if(!isAsian):
-SyntaxError: invalid syntax (script.rpy, line 225)
+  File "game/script.rpy", line 171, in script
+    python:
+  File "game/script.rpy", line 172, in <module>
+    if inventory.contains("dildo"):
+AttributeError: 'RevertableSet' object has no attribute 'contains'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 225, in script
-    if(!isAsian):
-  File "renpy/ast.py", line 1852, in execute
-    if renpy.python.py_eval(condition):
-  File "renpy/python.py", line 2247, in py_eval
-    code = py_compile(code, 'eval')
-  File "renpy/python.py", line 835, in py_compile
-    raise e
-SyntaxError: invalid syntax (script.rpy, line 225)
+  File "game/script.rpy", line 171, in script
+    python:
+  File "renpy/ast.py", line 922, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "renpy/python.py", line 2218, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 172, in <module>
+    if inventory.contains("dildo"):
+AttributeError: 'RevertableSet' object has no attribute 'contains'
 
 Windows-10-10.0.19041
 Ren'Py 7.4.2.1292
 Doki Doki President 2.0
-Thu Feb 11 20:56:48 2021
+Thu Feb 11 22:24:14 2021
