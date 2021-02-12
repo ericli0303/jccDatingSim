@@ -32,7 +32,6 @@ default isAsian = False
 default Chihuahua = False
 default outfit = ""
 default mainDish = ""
-default hasChocolates = False
 
 
 # The game starts here.
@@ -102,7 +101,7 @@ label start:
     "{i}What day is it?{/i}"
     with hpunch
     "{i}What?! It’s Valentine’s Day!?!{/i}"
-    "Your heart begins to beat wildly"
+    "Your heart begins to beat wildly-"
     m "Today’s the day I’ve been waiting for. I am going to confess my love to [g]!"
     m "But I’m so nervous… Will he like me back?"
     m "I have to talk to [bff] and come up with a plan!"
@@ -114,6 +113,8 @@ label start:
         "Maid outfit":
             $ totalScore += 5
             $ outfit = "maid"
+            m "I hope Gavin fantasizes like this... What am I saying, of course he does!"
+            m "Although, this might draw some unwanted attention."
 
         "Nun outfit":
             $ totalScore -= 10
@@ -163,11 +164,11 @@ label start:
 
     "The weather is beautiful, so you might as well walk to school today. It’s only a 20 minute stroll from here."
 
-    "The sun is still low on the horizon, peeking occasionally out from between the houses as you walk down Chihuahua Court. The sidewalks are busy with kids heading to school, and adults rushing to work. "
+    "The sun is still low on the horizon, peeking occasionally out from between the houses as you walk down Chihuahua Court. The sidewalks are busy with kids heading to school, and adults rushing to work."
 
     "As you are about to turn onto Takoyaki Trail a construction worker halts you."
 
-    show construction at right
+    show construction
     with dissolve
 
     "Construction Worker" "Hey kid! You can’t go this way. We’re doing some emergency maintenance for the next few hours."
@@ -201,7 +202,7 @@ label start:
 label shiba:
     scene bg_urban_street with fade
     "{i}Taking Shibuya Street is probably the best option…{/i}"
-    "You backtrack a block or so until you are back on Shibuya Street. The street is full of honking cars in a traffic jam caused by something far away. Salarymen pack the sidewalks pushing in all directions, trying to get to their offices. "
+    "You backtrack a block or so until you are back on Shibuya Street. The street is full of honking cars in a traffic jam caused by something far away. Salarymen pack the sidewalks pushing in all directions, trying to get to their offices."
     "Eventually you push your way through the biggest crowds and find a smaller road to walk on."
     jump street_over
 
@@ -209,23 +210,26 @@ label shiba:
 label chihuahua:
     scene bg_suburban_street_3 with fade
     "Taking Chihuahua Court is probably the best option…"
-    "You keep walking, and walking. Chihuahua Court is scenic for sure. You walk over a wide wooden bridge which passes over a creek. Nearby you spot a torii gate, which marks the entrance to your local shrine. "
+    "You keep walking, and walking. Chihuahua Court is scenic for sure."
+    # TODO: INSERT SHRINE PIC
+    "You walk over a wide wooden bridge which passes over a creek. Nearby you spot a torii gate, which marks the entrance to your local shrine. "
     menu:
         "Do you want to stop by for a quick prayer?"
 
         "Yes":
             "You stop in your tracks, then head through the gate into the shrine’s courtyard."
-            "You stop in front of the offering box. "
-            "Fumbling a bit, you grab a coin out of your pocket and toss it as your offering to the shrine’s kami. "
-            "You bow, then clap your hands twice, sending a quick prayer to the kami. "
+            # TODO: INSERT OFFERING BOX PIC
+            "You stop in front of the offering box."
+            "Fumbling a bit, you grab a coin out of your pocket and toss it as your offering to the shrine’s kami."
+            "You bow, then clap your hands twice, sending a quick prayer to the kami."
             "{i}Please, please let [g] like me back. And please give me the strength to confess to him!{/i}"
-            "With that done, you leave the shrine and continue on the scenic route to school. "
+            "With that done, you leave the shrine and continue on the scenic route to school."
             "{i}Shit! I’m already late!{/i}"
 
         "Nah":
             "{i}I want to ask the kami to bless me and give me the courage to confess to [g], but I am already running late.{/i}"
             "You pass the shrine and continue on the scenic route to school."
-    "It takes several minutes, but you finally reach a road that will get you back on track. "
+    "It takes several minutes, but you finally reach a road that will get you back on track."
     "{i} I’ve wasted so much time going this way.{/i}"
     jump street_over
 
@@ -233,12 +237,13 @@ label chihuahua:
 label dildo:
     scene bg_dildoway
     play music "audio/boss music.mp3" volume 0.5
-    "You head down the road a little longer and turn onto Dildo Drive. "
-    "The road is narrow and winding. Buildings here have exposed pipes rusting in the elements. Brick fences are crumbling, and trash piles up in corners. Occasionally you see people loitering on the sidewalks. Some of them stare at you as you walk by. "
+    "You head down the road a little longer and turn onto Dildo Drive."
+    "The road is narrow and winding. Buildings here have exposed pipes rusting in the elements. Brick fences are crumbling, and trash piles up in corners."
+    "Occasionally you see people loitering on the sidewalks. Some of them stare at you as you walk by. "
     "{i}Ugh, it smells bad here. It’s like the smell of a dog who just got peed on by a human. Gross!{/i}"
-    "As you pass by a dark alleyway, you hear a whistle from it’s depths. "
+    "As you pass by a dark alleyway, you hear a whistle from it’s depths."
     "A raspy, growling voice" "hey cute girl, come over here."
-    "You feel a poke on your lower back"
+    "You feel a poke on your lower back-"
     "Surprised and scared, you start running down the road. The road slopes downwards pretty intensely here."
     if(not isAsian):
         "{b}thump, thump, thump{/b} go footsteps behind you. Faster, faster!"
@@ -388,7 +393,7 @@ label peechew:
     "WHAT THE F-? Why is [g] here???"
     "Less than 2 seconds later, there is a second stream of pee landing all over the dog in front of you."
     "You and [g] make awkward eye contact."
-    jump weirdending
+    jump peechewending
 
 #End of Dog Scene
 label dog_over:
@@ -807,15 +812,19 @@ label dog_over:
     "{i}Dang these are expensive.{/i}"
     "{i}But they sell dark chocolates with raspberry filling! Those are [g]-san’s favorites!{/i}"
     
-    if "money" in inventory: 
-        "{i}Good thing I found some cash on the street earlier today, otherwise I wouldn’t be able to afford these.{/i}"
-        "{i}Now I can do a real Valentine’s Day confession! Chocolates and all!{/i}"
-        hasChocolates = True
+    menu:
 
-    else:
-        "{i}This really sucks! If only I had miraculously found some money on the street earlier today.{/i}"
-        "{i}Oh well… I’ll do my best to confess to him without chocolates.{/i}"
+        "Nevermind, I don't have enough money" if "money" not in inventory:
+            "{i}This really sucks! If only I had miraculously found some money on the street earlier today.{/i}"
+            "{i}Oh well… I’ll do my best to confess to him without chocolates.{/i}"
 
+        "Not buying" if "money" in inventory:
+            "{i}Oh well… It's not worth the price. I’ll have to do my best to confess to him without the chocolates.{/i}"
+
+        "Buying" if "money" in inventory: 
+            "{i}Good thing I found some cash on the street earlier today, otherwise I wouldn’t be able to afford these.{/i}"
+            "{i}Now I can do a real Valentine’s Day confession! Chocolates and all!{/i}"
+            $ inventory.add("chocolates")
 
 ################################################
 ##         ClASSES 2                          ##
@@ -850,6 +859,7 @@ label dog_over:
     "{i}Is no one questioning why we’re asking questions about gavin? Ugh whatever...{/i}"  
 
     menu:
+        "{i}What should I answer?{/i}"
         "3.7":
             teacher "The answer is 3.9."
             
@@ -882,6 +892,8 @@ label dog_over:
     "{i}Again? Why are they asking me about [g]-san? This will be too easy.{/i}"
 
     menu:
+        "{i}What should I answer?{/i}"
+        
         "A red overcoat":
             teacher "Incorrect, the answer is a maroon scarf."
 
@@ -914,6 +926,8 @@ label dog_over:
     "{i}Shoot, I think I remember something about this in my preCalculus class…{/i}"
 
     menu:
+        "{i}What should I answer?{/i}"
+        
         "In half":
             teacher "Incorrect, the answer is in thirds."
             
@@ -953,8 +967,11 @@ label dog_over:
     "You arrive at Eru Hall, room 408, where American Culture Club is being held."
     "[bff] and [mbff] are chatting in one corner. You see [bff] laugh and playfully push [mbff] away from her."
     "{i}Looks like they’re getting along quite well.{/i}"
+    "{i}Guess that box of chocolates really sends a message across.{/i}"
     "At the front of the classroom, [g]-san and the eboard are leading a discussion about America’s Super Bowl sports event."
 
+
+    show gavin thinking at left with easeinleft
     g ".. Running an advertisement at the Super Bowl can cost thousands of dollars per second! No wonder Americans can only afford McDonalds..."
     g "... And the Americans throw parties to watch the advertisements. Isn’t that insane? Why do they like watching advertisements so much?…"
     "The discussion is fun and heated."
@@ -970,15 +987,67 @@ label dog_over:
         bff "Are you going to invite him or not?"
         
         "Yes":
-            #todo
-            pass
+            bff "YES FINALLY. I mean-"
+            bff "It’s no big deal! Just go invite him, dummy!"
+
+            "You finally build up the courage to ask [g] out to Karaoke. If you don’t act now you will miss your chance to grow closer!"
+
+            m "[g]-san, are you free after school today?"
+
+            g "Yeah, I’m free. What’s the matter?"
+            
+            m "Ano… actually me, [bff] and [mbff] are going to karaoke. I was wondering if you would want to join us?"
+
+            show gavin excited with dissolve
+            g "Karaoke? Ooh that sounds fun! Sure, I’ll join."
+            
+            m " I will send you the address! See you there!"
+            
+            jump karaoke
 
         "No":
             jump karaokenotinvite
 
+# didn't invite ending
+label karaokenotinvite:
+    show bff shocked with dissolve
+    bff "Really?!"
+    bff "After all this, you can't bring yourself to even ask him to come with us?"
+    show bff sad with dissolve
+    bff "I tried my hardest to motivate you today"
+    bff "Oh well..."
+    show bff annoyed with dissolve
+    bff "Fine! But I don’t want a third wheel tonight."
+    bff "I’m going to karaoke alone with [mbff]-san."
+    bff "Him… and me…"
+    bff "Alone…"
+    show bff shocked with dissolve
+    bff "...a Valentine's date!"
+    show bff smug with dissolve
+    bff "I’m gonna go now."
+    bff "Ahem. [mbff]-kun!!! Get over here! Let’s get going!"
+    show male bff surprised with easeinleft at right
+    mbff "!!!!"
+    hide male bff
+    hide bff
+    "{i}I'm kind of jealous of them.{/i}"
+    "{i}I wish I had the courage to ask out [g]-san...{/i}"
+    "{i}I should at least ask him to walk home with me.{/i}"
+    "{i}After all, we’re going the same direction.{/i}"
+    "{i}It’s my last chance…{/i}"
+    "{i}I can’t screw this up.{/i}"
+    show gavin satisfied with easeinleft at left
+    "..."
+    g "You wanna walk home together? Sure!"
+    g "We can walk together to Chihuahua Court, but then I have to go my separate ways."
+    "{i}Alright! This is better than nothing.{/i}"
+    jump walk
+
 ################################################
 ##         KARAOKE                            ##
 ################################################
+
+label karaoke:
     scene bg_kareoke with fade
 
     show gavin excited at right with easeinright
@@ -1076,75 +1145,249 @@ label dog_over:
 ##         HEADING HOME/PRE-ENDING            ##
 ################################################
 
+    scene bg_kareoke with fade
 
+    "You hear a knock at the door to your karaoke room."  
+     
+    unknown "Excuse me, but your time is up! Please wrap up and head to the front desk, thank you very much."
+
+    "{i}Dang, has it already been two hours?{/i}"
+
+    "You and Gavin have been singing your hearts out for hours."
+    "In the corner of the room, [bff] is passed out on [mbff]’s lap."
+
+    show male bff hold glasses at right with easeinright
+    mbff "Wake up sleepyhead. We’re getting kicked out."
+
+    show bff sleepy at left with easeinleft
+    bff "Hnnng sooo sleepyyy..."
+    bff "*AAAAAIIIIIIEEEE*"
+
+    show bff angry with dissolve
+    bff "Why didn’t you wake me up, stupid! I was on your lap! That’s so embarrassing!!!"
+    bff "That was-"
+    bff "Kind of…"
+    bff "Nice."
+    show bff delighted with dissolve
+    bff "Hrmph."
+
+    "{i}Why does flirting come so easy to Lulu? It’s not fair.{/i}"
+    
+    show gavin bigsmile with dissolve
+    g "Get up you lovebirds. It’s time to head home."
+    "[bff], getting up from her position on [mbff]'s lap, sidles up to you and whispers into your ear."
+
+    show bff laugh with dissolve
+    bff "You didn’t get up to anything funny with Gavin-chan while I was asleep, did you? Heehee-"
+
+    show bff normal with dissolve
+    
+    menu:
+        bff "So, are you going to ask him to walk home with you?"
+
+        "Yes":
+            hide bff 
+            hide male bff
+            show gavin bigsmile at right with easeinleft
+            "{i}This is it. I’m going to confess to him while we walk together.{/i}"
+            "{i}It’s my final chance...{/i}"
+            "{i}I can’t screw this up.{/i}"
+
+            g "..."
+            show gavin excited with dissolve
+            g "You want to walk home together? Sure!"
+            g "We can walk together to Chihuahua Court, but then I have to go my separate ways."
+
+            "{i}Alright! I can do this!{/i}"
+
+            jump walk
+
+        "No":
+            "{i}If I walk him home, I’ll have to confess to him...{/i}"
+            "{i}But I just can’t gather enough courage to confess!{/i}"
+            "{i}He’s so dreamy, but that will make it hurt more if he rejects me.{/i}"
+            "{i}I can’t do it!{/i}"
+
+
+            bff "Alright, suit yourself."
+            "She gives you a disapproving look, but takes your arm and starts dragging you out."
+
+            "{i}I think we’re better off if he never finds out how I feel...{/i}"
+            "{i}Even if he smells really good.{/i}"
+
+            jump chickened_ending   
+            
 
 ################################################
 ##         ENDINGS                  ##
 ################################################
 
-    show gavin bigsmile with dissolve
-
-    if (totalScore == 1000):
-
-        g "I love you"
-
-        "[g] grabs you by the hair and kisses you. Happy Ending."
-
+label walk:
+    scene bg_possible_farewell with fadein
+    show gavin satisfied easeinright at right
+    "You and Gavin decide to walk back home together, when you realize your pockets feel awfully heavy..."
+    if not inventory:
+        "hm... there's nothing in my pockets... I must be going crazy..."
     else:
+        "Hmmm... I should give Gavin a gift!"
+        menu:
+            "What should I give him?"
 
-        g "I'm not interested"
+            "Chocolates" if "chocolates" in inventory:
 
-        "[g] grabs you by the hair and throws you out of his room."
+            
+            "Money" if "money" in inventory:
+                "You pull out the wad of money that you found earlier in the day."
+                show gavin excited with dissolve
+                g "A gift? For me?"
+                g "Thanks MC-san!"
+                show gavin confused with dissolve
+                g "I’m not sure why you’re giving me this though. Do I owe you something?"
+                "..."
+                g "Oh it’s really just a heartfelt gift? That’s nice, I guess."
+                show gavin satisfied with dissolve
+                g "Well, anyways…"
+                totalScore += 10
+
+            "Poop" if "poop" in inventory:
+                "You pull out the mushy poop from your pocket."
+                show gavin excited with dissolve
+                g "A gift? For me?"
+                g "Wait a second…"
+                show gavin shocked with dissolve
+                g "Why are you carrying poop? That’s what that smell was? That’s really gross, [myName]-chan."
+                "Gavin gives you a disgusted and disgruntled look."
+                show gavin stern with dissolve
+                g "Thanks, I guess… But honestly, no thanks."
+                "Gavin gestures for you to drop it on the curb."
+                g "Please don’t do that again…"
+                totalScore -=5
+
+            "Dildo" if "dildo" in inventory:
+                "You pull the floppy yellow dildo out from your pack. It’s still crusty."
+                show gavin confused with dissolve
+                g "OHHH, [myName]-chan. What the hell is that?"
+                "..."
+                g "That’s… a gift? For me?"
+                g "Umm, that’s really disgusting. Why would you give that to me?"
+                "..."
+                g "I guess I’ll take it… For science reasons…"
+                g "But just so you know, that was totally uncalled for. You probably shouldn’t give gifts like that."
+                totalScore += 5
+
+        jump calculateending
 
 
-    
-label dildoending:
-    #TODO: Bad Ending
-    "Bad Ending"
-    return
 
-label weirdending: 
-    #TODO: Weird Ending
-    "Weird Ending"
-    return 
-
-
-# didn't invite ending
-label karaokenotinvite:
-    show bff shocked with dissolve
-    bff "Really?!"
-    bff "After all this, you can't bring yourself to even ask him to come with us?"
-    show bff sad with dissolve
-    bff "I tried my hardest to motivate you today"
-    bff "Oh well..."
-    show bff annoyed with dissolve
-    bff "Fine! But I don’t want a third wheel tonight."
-    bff "I’m going to karaoke alone with [mbff]-san."
-    bff "Him… and me…"
-    bff "Alone…"
-    show bff shocked with dissolve
-    bff "...a Valentine's date!"
-    show bff smug with dissolve
-    bff "I’m gonna go now."
-    bff "Ahem. [mbff]-kun!!! Get over here! Let’s get going!"
-    show male bff surprised with easeinleft at right
-    mbff "!!!!"
-    hide male bff
-    hide bff
-    "{i}I'm kind of jealous of them.{/i}"
-    "{i}"
-    
-
-    
+label calculateending:
+    if totalScore >= 100:
+        jump veryniceending
+    elif totalScore >= 60:
+        jump niceending
+    else:
+        jump verybadending
+          
 
 
 label dickboxending:
     show gavin villiansmile with dissolve
     "You have become one of [g]'s bros and a romantic relationship is no longer possible. You can’t exactly feel happy about the outcome but you did sing dick in a box alongside [g]. At least you are still close friends…"
+    return
+
+    
+label dildoending:
+    scene bg_youdied with fade
+    "While you were unconcious, no one passed by the sketchy Dildo Drive you decided to take. As you hopelessly waited for help, you die due to blood loss"
+    return
+
+label peechewending: 
+    "Weird Ending."
+    return 
 
 
+label niceending:
+    "You and Gavin decide to walk back home together. You fidget with your hair wondering when you should confess to Gavin."
+    "You take deep breaths, trying to calm down, as you feel that your heart is going to explode."
+    "You keep on wondering how you should confess to Gavin-san, not realizing that you have already arrived at the intersection where you and Gavin are going to head in different directions."
+    "You stop and turn to face Gavin."
+    m "Ga-Gacchan I-I have something to tell you."
+    "You looked away, trying to hide your blush"
+    show gavin confused
+    g "What is it [myName]-chan?"
+    m "I-I don’t know when-when this started. B- But whenever I see you my heart goes doki doki b-because... I like you. I-I know this wasn’t what you e-expected but, I just want to say… I love you!"
+    "You turn away from Gavin, waiting for his response."
+    show gavin surprised with dissolve
+    "Gavin doesn’t speak for a while."
+    show gavin stern with dissolve
+    g "Eto... I'm very happy that you like me, and it’s okay, you don’t have to worry."
+    g "Love always comes unexpected. Um... but I have always thought of you as my best friend, wait, actually best friend like siblings."
+    g "And I am very glad that you like me, but I’m sorry."
+    g "Right now I think we are so close to each other, that I don’t want to make things awkward later."
+    g "But I think we should remain like best friends."
+    g "Maybe someday my feelings will change, if you still have feelings for me at that time. So don’t be sad."
+    "GAME OVER - You got friendzoned"
+
+label veryniceending:
+    
+    "You are walking home with Gavin after school. You try to act normal, hiding your blush. You feel that your heart is going to explode, all you hear is your heart going doki doki." 
+    "Suddenly, you are filled with resolve. {i}You can do it!{/i}"
+    "You turn to face Gavin."
+    m "Ga- Gacchan. I- I"
+    "Just as you are about to tell Gavin your true feelings, a motorcycle rushes by too close for comfort. In surprise, you lose your balance."
+    "*Crash*"
+    "You fall onto your back. Wait, but something cushioned your head from hitting the solid pavement."
+    scene otome with fade
+    "When you open your eyes, you see that Gavin fell right above you. His hand is placed in between your head and the sidewalk. He must have jumped down to protect you."
+    "His face is very close to yours. It’s like time has stopped. Gavin pulls you up, his face flush."
+    g "Are you ok? So-Sorry, I hope you don’t get mad. By the way, what did you want to say earlier?"
+    m "Ga-Gacchan, I- I like you. I- I have had feelings for you for a long time. I- I know this is sudden so you don’t have to answer me right now."
+    g "[myName] chan, a-actually I- I was so scared just now when you fell. I-I was afraid that you got hurt, b-because I like you too!"
+    m "Ehhhh?! R-Really Gacchan?"
+    "You feel your face heating up with… Joy? Embarrassment? You haven’t quite felt like this before."
+    "Gavin suddenly props up his arm next to you, locking you in a kabedon."
+    g "Y-Yeah. I’ve  liked you since the day we met. I- I want to protect you. I don’t want you to think of me as a best friend. I-I want to be your boyfriend. P-please go out with me!"
+    "Your eyes meet his in a tender gaze. He leans forward, bringing his lips closer, and closer..."
+    "You meet him in the middle. Your lips intertwine with his in a brief, but sweet kiss."
+    
+    "After that day, you and Gavin have been walking to school and back home everyday holding hands."
+    "Gavin often shows his love to you in front of your classmates, making you blush, and both of you hang out almost every day after school to go on a date."
+    "Your friends describe you guys as a “sweet couple. Your friends often envy that you have such a sweet boyfriend who is always by your side, protecting you at all cost. "
+
+    
+label verybadending:
+    "You and Gavin start to walk back home. You decided that this is a good time to confess to [g]."
+
+    m "Gachan, I, have something to tell you."
+
+    g "What’s the matter? [myName]-chan"
+
+    m "Actually, I, I started having feelings for you. I-know that this is so- so sudden, but I just want to say that I like you."
+
+    "You look at the ground as you feel your face heat up."
+    "Gavin stares at you, with a awkward smile"
+
+    g "Errrrm, [name]-chan, was this a prank that someone put you up to? They dared you to say this right?"
+
+    "You shake your head."
+
+    m "I.. I really mean it. I mean it from the bottom of my heart! I- I know this is very sudden but, but I hope that you un-understand my feelings, I-I really really meant it."
+
+    "Gavin’s face turns incredulous for a moment, only being able to be described as *NANI?!?*"
+
+    g "[name]-chan. Thank you for telling me your feelings towards me."
+    g "I’m sorry."
+    g "I don’t think we are suitable for each other. You view things... differently than I do."
+    g "You have been good to me most of the time. I’m sorry, I don’t think I can be your boyfriend... and-"
+
+    "You try to get a glimpse of Gavin’s expression, as he turns to walk away"
+
+    g "More importantly, I like someone else…"
+
+    "You try to hold back your tears as you look up at the sky, noticing that it’s starting to rain."
+    "You feel water droplets on your face, but you can’t quite tell if it’s tears or the rain."
+
+    return
+    
+    
 
 
-
-"You didn’t invite [g] to the karaoke. You missed your chance to confess and tell him your true feelings. So he became another girl’s boyfriend :)"
-return
