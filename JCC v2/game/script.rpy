@@ -1002,6 +1002,8 @@ label dog_over:
     hide gavin with dissolve
     "At the end of the discussion, [bff]-san comes over and pokes you to get your attention."
     "*poke poke*"
+    bff "Hey [myName]-san. [mbff] and I are going to karaoke after this. It'll be too awkward if it's just the two of us though, so you’re coming too!"
+    "..."
     bff "Sooo…"
     bff "This is your last chance to make a move on [g]-san."
 
