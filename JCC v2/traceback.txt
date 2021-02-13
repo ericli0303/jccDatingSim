@@ -1,46 +1,62 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 1400, in script
-    m "Ga- Gacchan. I- I"
-IOError: Couldn't find file 'audio/niceneding.mp3'.
+While loading <'Image' u'gui/main_menu.png'>:
+IOError: Couldn't find file 'gui/main_menu.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1400, in script
-    m "Ga- Gacchan. I- I"
-  File "renpy/ast.py", line 715, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "renpy/exports.py", line 1384, in say
-    who(what, *args, **kwargs)
-  File "renpy/character.py", line 1179, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "renpy/character.py", line 851, in do_display
-    **display_args)
-  File "renpy/character.py", line 601, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
+    python hide:
+  File "renpy/ast.py", line 922, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "renpy/python.py", line 2218, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
+    python hide:
+  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
+    ui.interact()
   File "renpy/ui.py", line 298, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "renpy/display/core.py", line 3007, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
-  File "renpy/display/core.py", line 3700, in interact_core
-    renpy.audio.audio.periodic()
-  File "renpy/audio/audio.py", line 1101, in periodic
-    raise_(exc[0], exc[1], exc[2])
-  File "renpy/audio/audio.py", line 1079, in periodic_thread_main
-    periodic_pass()
-  File "renpy/audio/audio.py", line 1021, in periodic_pass
-    c.periodic()
-  File "renpy/audio/audio.py", line 487, in periodic
-    topf = load(self.file_prefix + filename + self.file_suffix)
-  File "renpy/audio/audio.py", line 69, in load
-    rv = renpy.loader.load(fn)
+  File "renpy/display/core.py", line 3517, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "renpy/display/core.py", line 2377, in draw_screen
+    renpy.config.screen_height,
+  File "render.pyx", line 492, in renpy.display.render.render_screen
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 751, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 751, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 751, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/screen.py", line 681, in render
+    child = renpy.display.render.render(self.child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 751, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/im.py", line 607, in render
+    return cache.get(self, render=True)
+  File "renpy/display/im.py", line 271, in get
+    surf = image.load()
+  File "renpy/display/im.py", line 651, in load
+    filelike = renpy.loader.load(self.filename)
   File "renpy/loader.py", line 798, in load
     raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'audio/niceneding.mp3'.
+IOError: Couldn't find file 'gui/main_menu.png'.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.2.1292
 Doki Doki President 2.0
-Fri Feb 12 18:23:54 2021
+Fri Feb 12 18:45:20 2021

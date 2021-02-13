@@ -17,7 +17,7 @@ define gavinandmbff = Character('[g] and [mbff]')
 image gavin bigsmile = "gavin big smile 1.png"
 image gavin confused = "gavin confused 1.png"
 image gavin stern = "gavin stern 1.png"
-image gavin shock = "gavin shock 1.png"
+image gavin shocked = "gavin shock 1.png"
 image gavin excited = "gavin excited 1.png"
 image gavin surprised = "gavin surprised 1.png"
 image gavin thinking = "gavin thinking 1.png"
@@ -257,7 +257,6 @@ label dildo:
         with hpunch
         with hpunch
         with hpunch
-        play sound "audio/game over.mp3" volume 0.5
         "\"{b}THUD{/b}\""
         "You tumble down the hill, bouncing off of the ground repeatedly as you fall helplessly."
         "Your body comes to a sudden, painful halt, as you hit a light post and your limp body curls around it."
@@ -1351,6 +1350,8 @@ label dickboxending:
 
 label dildoending:
     scene bg_youdied with fade
+    stop music
+    play sound "audio/game over.mp3" volume 0.5
     "While you were unconscious, no one passed by the sketchy Dildo Drive you decided to take. As you hopelessly waited for help, you die due to blood loss"
     return
 
