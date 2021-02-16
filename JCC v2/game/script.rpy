@@ -537,7 +537,7 @@ label dog_over:
             $ totalScore -= 50
             m "HOLD IT RIGHT THERE!"
             "Dashing across the room, you smack the box of chocolates out of her hands. The shiny round chocolates spill out and scatter across the floor."
-            show gavin shock with dissolve
+            show gavin shocked with dissolve
             show nemesis angry with dissolve
             kiomi "You... You bitch!"
             show nemesis sad with dissolve
@@ -547,7 +547,7 @@ label dog_over:
             g "Don't worry Kiomi-san, I'll help you pick these up."
             "[g] and Kiomi drop to the floor and start picking up the chocolates."
             g "See, they’re still fine to eat!"
-            "*gulp*"            
+            "*gulp*"
             show gavin excited with dissolve
             g "Wow these are delicious! This was super sweet of you, Kiomi-chan!"
             show nemesis smile with dissolve
@@ -570,11 +570,10 @@ label dog_over:
     kiomi "[g]-san..."
     kiomi "I have something I want to tell you-"
 
-
     play sound "audio/bell.mp3"
     "*RINNGGGG*"
     show nemesis sad with dissolve
-    show gavin shock with dissolve
+    show gavin shocked with dissolve
     "Just before Kiomi is about to finish saying something, the school bell goes off. It is time for your first class."
     g "Ah, it's time for class. See you guys later. Thanks again for the chocolates Kiomi-chan!"
     "[g] runs off to his first class"
@@ -606,7 +605,6 @@ label dog_over:
     teacher "... so what is the probability of getting rejected on Valentine's Day? ..."
     teacher "... when gavin folds his pants in thirds ..."
     "{i}Ugh, boring.{/i}"
-
 
     "..."
 
@@ -916,7 +914,7 @@ label dog_over:
         "{i}What should I answer?{/i}"
 
         "A red overcoat":
-            teacher "Incorrect, the answer is a maroon scarf."
+            teacher "Incorrect, the answer is a maroon beanie."
 
             "{i}Shit! I literally sniffed his coat this morning. How could I forget that it wasn’t red!?{/i}"
 
@@ -925,7 +923,7 @@ label dog_over:
             $ totalScore -= 5
 
         "A redsocks cap":
-            teacher "Incorrect, the answer is a maroon scarf."
+            teacher "Incorrect, the answer is a maroon beanie."
 
             "{i}Damn it! He’s an esports fan, not a baseball fan!{/i}"
 
@@ -933,8 +931,8 @@ label dog_over:
 
             $ totalScore -= 5
 
-        "A maroon scarf":
-            "Correct, [g] sure likes his scarfs."
+        "A maroon beanie":
+            "Correct, [g] sure likes his beanie."
 
             "{i}That was so obvious.{/i}"
 
@@ -1141,7 +1139,7 @@ label karaoke:
             play music "<from 36>audio/allstar.mp3" fadein 1.0 fadeout 1.0 volume 0.3 loop
             "*Play All Star*"
 
-            show male bff excited at right with easeinright
+            show male bff surprised at right with easeinright
             gavinandmbff "SOOOOOOOOOOOMMMM..."
 
             "{i}Huh, wait what are they doing, why are they yellin...{/i}"
