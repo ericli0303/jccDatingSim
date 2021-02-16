@@ -29,7 +29,7 @@ image construction = "construction worker.png"  # construction
 
 default totalScore = 0
 default inventory = set()
-default name = ""
+default myName = ""
 default isAsian = False
 default Chihuahua = False
 default outfit = ""
@@ -146,10 +146,8 @@ label start:
     "{i}What’s my name again?{/i}"
 
     python:
-        name = renpy.input("What's your name?")
-        name = name.strip() or "Shy Guy"
-
-    define myName = Character("[myName]")
+        myName = renpy.input("What's your name?")
+        myName = myName.strip() or "Shy Guy"
 
     # "{i}{/i}"
     "{i}Right, I'm [myName]. Silly me, how could I have forgotten.{/i}"
